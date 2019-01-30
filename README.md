@@ -1,4 +1,4 @@
-# [Pentex Dashboard 2](https://github.com/maskend/pentex) [![license][license-badge]][LICENSE]
+# [Pentex Dashboard](https://github.com/maskend/pentex)
 
 Pentex Dashboard is a Bootstrap Admin Panel for Complex Business Modules - An Open Source Admin Dashboard by Maskend.
 
