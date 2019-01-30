@@ -7,6 +7,7 @@
   "description": "Pentex Dashboard is a Bootstrap Admin Panel for Complex Business Modules - An Open Source Admin Dashboard by Dannibla.",
   "license": "MIT",
   "private": true,
+  "homepage": "https://github.com/maskend/pentex",
   "dependencies": {
     "ejs": "^2.6.1",
     "path": "^0.12.7",

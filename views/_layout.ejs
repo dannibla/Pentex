@@ -1,0 +1,220 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Pentex Dashboard is a Bootstrap Admin Panel for Complex Business Modules - An Open Source Admin Dashboard by Maskend.">
+    <meta name="author" content="Maskend">
+    <link rel="icon" href="favicon.ico">
+    <title>Pentex - Admin Dashboard</title>
+    <!-- Page Loder Start -->
+    <script>document.onreadystatechange = function () { var state = document.readyState; if (state == 'complete') { setTimeout(function () { document.getElementById('interactive'); document.getElementById('load').style.visibility = "hidden"; document.getElementById('contents').style.visibility = "visible"; }, 400); } }</script>
+    <style>
+        #load {
+            width: 100%;
+            height: 100%;
+            z-index: 11111;
+            position: fixed;
+            background: url("../image/loading.gif") no-repeat center center #fff;
+        }
+    </style>
+    <!-- Page Loder End -->
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <%- include(page) %>
+
+    <script type="text/javascript">
+
+        $('#navbar-collapse-1').bind('mousewheel DOMMouseScroll', function (e) {
+            var scrollTo = null;
+
+            if (e.type == 'mousewheel') {
+                scrollTo = (e.originalEvent.wheelDelta * -1);
+            }
+            else if (e.type == 'DOMMouseScroll') {
+                scrollTo = 40 * e.originalEvent.detail;
+            }
+
+            if (scrollTo) {
+                e.preventDefault();
+                $(this).scrollTop(scrollTo + $(this).scrollTop());
+            }
+        });
+
+
+        function toggleFullScreen() {
+            if ((document.fullScreenElement && document.fullScreenElement !== null) || // alternative standard method
+                (!document.mozFullScreen && !document.webkitIsFullScreen)) { // current working methods
+                if (document.documentElement.requestFullScreen) {
+                    document.documentElement.requestFullScreen();
+                } else if (document.documentElement.mozRequestFullScreen) {
+                    document.documentElement.mozRequestFullScreen();
+                } else if (document.documentElement.webkitRequestFullScreen) {
+                    document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+                }
+            } else {
+                if (document.cancelFullScreen) {
+                    document.cancelFullScreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitCancelFullScreen) {
+                    document.webkitCancelFullScreen();
+                }
+            }
+        }
+
+        $("#fullscreen").click(function () {
+            toggleFullScreen();
+            $("#fullscreen i").toggleClass("fa-expand fa-compress");
+        });
+
+        document.onkeydown = function (e) {
+            if (e.which == 122) {
+                $("#fullscreen i").toggleClass("fa-expand fa-compress");
+            }
+        }
+
+        //$(window).load(function () {
+        //    $(document).on('click', '.navbar .dropdown-menu', function (e) { e.stopPropagation(); });
+        //});
+
+        $(document).ready(function () {
+            $(".toTop").css("display", "none");
+
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 0) { $(".toTop").fadeIn("slow"); } else { $(".toTop").fadeOut("slow"); }
+            });
+
+            $(".toTop").click(function () {
+                event.preventDefault();
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+            });
+        });
+
+        /* fixed - navbar */
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 40) {
+                $('#scroller').addClass('navbar-fixed-top ');
+                $('#navbar-collapse .navbar-nav .dropdown').removeClass('open');
+                $('#navbar-collapse-1 ul').removeClass('navbar-big-icon');
+            } else {
+                $('#scroller').removeClass('navbar-fixed-top ');
+                $('#navbar-collapse-1 ul').addClass('navbar-big-icon');
+            }
+        });
+
+        //	start of search form script
+
+        function FindFormAjax(OBJ) {
+            var FindForm = document.getElementById('displayFindForm')
+            if (LTrim(RTrim(OBJ.value)) != '') {
+                var rtnsearch1 = GetAjaxValueGlobalSearch("MENUSEARCHNEW_VER_1", "&searchword1=" + escape(OBJ.value))
+                FindForm.style.display = ''
+                FindForm.innerHTML = rtnsearch1
+            } else {
+                FindForm.style.display = 'none'
+                FindForm.innerHTML = ''
+            }
+        }
+
+        function GetAjaxValueGlobalSearch(FunName, PassValue) {
+            var passUrl = "AgencyAjaxServer.asp?FunName=" + FunName + PassValue
+            var handleStateChange = function () {
+                switch (xmlhttp.readyState) {
+                    case 0: // UNINITIALIZED
+                    case 1: // LOADING
+                    case 2: // LOADED
+                    case 3: // INTERACTIVE
+                        break;
+                    case 4: // COMPLETED
+                        break;
+                    default: alert("error");
+                }
+            }
+            var xmlhttp;
+            try { xmlhttp = new ActiveXObject("Msxml2.XMLHTTP"); }
+            catch (e) {
+                try { xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); }
+                catch (e) {
+                    try { xmlhttp = new XMLHttpRequest(); }
+                    catch (e) { xmlhttp = false; }
+                }
+            }
+            xmlhttp.onreadystatechange = handleStateChange;
+            xmlhttp.open("GET", passUrl, 0); // 0 async
+            xmlhttp.send(null);
+            return xmlhttp.responseText;
+        }
+
+        //	close on escape key
+        $(document).keyup(function (event) {
+            if (event.which === 27) {
+                event.preventDefault();
+                closeSearch();
+            };
+            if ($('.search-field').val() != '') {
+                event.preventDefault();
+                openDropdown();
+            } else {
+                event.preventDefault();
+                closeDropdown();
+            }
+        });
+
+        //	Show Search if form is not active or input search empty
+        $('#search-nav button[type="button"]').click(function (event) {
+            if (!$("#search-nav").hasClass("active") || $('.search-field').val() === '') {
+                event.preventDefault();
+                openSearch();
+            }
+        });
+
+        $('.search-field').blur(function (event) {
+            event.preventDefault();
+            closeSearch();
+        });
+
+        //	close form
+        $('#search-nav button[type="reset"]').click(function () {
+            event.preventDefault();
+            closeDropdown();
+            closeSearch();
+        });
+
+        function openDropdown() {
+            $('#search-menu').addClass('open');
+        }
+
+        function closeDropdown() {
+            $('#search-menu').removeClass('open');
+        }
+
+        function closeSearch() {
+            $('.search-field').val('');
+            $('.search-field').hide();
+            $('#search-nav').removeClass('active');
+            $('#search-nav button[type="reset"]').hide();
+            $('#search-nav button[type="button"]').show();
+        }
+
+        function openSearch() {
+            $('#search-nav').addClass('active');
+            $('.search-field').show();
+            $('.search-field').focus();
+            $('#search-nav button[type="reset"]').show();
+            $('#search-nav button[type="button"]').hide();
+        }
+
+//	end of search form script
+    </script>
+
+
+</body>
+</html>

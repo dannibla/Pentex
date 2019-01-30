@@ -4,15 +4,15 @@
   "authors": [
     "dannibla <dannibla@github.com>"
   ],
-  "description": "Pentex Dashboard is a Bootstrap Admin Panel for Complex Business Modules - An Open Source Admin Dashboard by Dannibla.",
+  "description": "Pentex Dashboard is a Bootstrap Admin Panel for Complex Business Modules - An Open Source Admin Dashboard by Maskend.",
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "jquery": "^3.3.1",
-    "bootstrap": "^4.2.1",
-    "popper.js": "^1.14.7"
+    "jquery": "2.2.4",
+    "bootstrap": "3.4.0",
+    "font-awesome": "4.7.0"
   },
-  "homepage": "https://github.com/dannibla/pentex",
+  "homepage": "https://github.com/maskend/pentex",
   "main": "",
   "ignore": [
     "**/.*",
