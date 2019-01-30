@@ -24,197 +24,500 @@
     <link rel="stylesheet" type="text/css" href="../css/main.css" />
     <script src="../lib/jquery/dist/jquery.min.js"></script>
     <script src="../lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../js/main.js"></script>
 </head>
 <body>
+    <div id="load"></div>
+    <div id="contents" style="visibility:hidden;">
+        <nav class="navbar navbar-inverse navbar-custom no-border-radius hidden-xs">
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav" style="height:40px!important;float:left;">
+                    <li class="dropdown" style="padding:2px;">
+                        <a class="dropdown-toggle" href="IndexPage.asp">
+                            <h5 style="display:inline-block;">Pentex</h5>
+                        </a>
+                    </li>
+                    <li class="dropdown" style="padding:13px;">
+                        <a style="border-right:1px solid #9d9d9d;line-height: 14px;padding-left: 0;margin-left: -10px;">&nbsp;</a>
+                    </li>
+                    <li class="dropdown" style="padding:10px;padding-left: 0;">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-home"></i> Home
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="AgencyExportKPIList.asp?button=View&FromDate=01-Nov-2014&ToDate=30-Nov-2014">Master Tracker</a></li>
+                            <li><a href="BaltickStockReport.asp?button=View">Inventory Tracker</a></li>
+                            <li><a href="AgencyBookingVsInventory.asp">Booking Vs Inventory</a></li>
+                            <li><a href="AgencyCreditTracker.asp">Credit Tracker</a></li>
+                            <li><a href="AgencyImportHSDDetentionCollectionRptNew.asp">Detention Tracker</a></li>
+                            <li><a href="AgencyMasterBlTracking.asp?button=Submit&FormValidFrom=01-Nov-2014&FormValidTo=30-Nov-2014">Client Tracker</a></li>
+                            <li><a href="AgencyTariffAnalysis.asp?button=View&FromDate=01-Nov-2014&ToDate=30-Nov-2014">Revenue Analysis</a></li>
+                            <li><a href="http://localhost/aragency/MIS/DashBoardlogin.asp?DashBoardYear=2012&MISPrincipals=1,4&UserId=anees">Business Performence</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" style="padding:13px;">
+                        <a style="border-right:1px solid #9d9d9d;line-height: 14px;padding-left: 0;padding-right: 0;margin-left: -10px;">&nbsp;</a>
+                    </li>
+                    <li class="dropdown li-form" id="search-menu" style="padding:10px;height: 40px;" autocomplete="off">
+                        <form role="search" id="search-nav">
+                            <input type="search" class="search-field" placeholder="Search Form …" name="findForm" id="findForm" autocomplete="off" onkeypress='FindFormAjax(this)' autocomplete="off">
+                            <!--<button type="reset"><i class="fa fa-close"></i></button>-->
+                            <button type="button" class="search-submit"><i class="fa fa-search"></i> Search </button>
+                        </form>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"></a>
+                        <ul class="dropdown-menu">
+                            <div id="displayFindForm" class='SearchDiv' style='display:none'></div>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right effect" style="height:40px!important;">
+                    <li class="dropdown dropdown-grid" style="padding:10px;">
+                        <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle" style="padding-left: 0;padding-right: 0;">
+                            <i class="fa fa-user"></i>
+                            Administrator - JEDDAH
+                        </a>
+                        <div class="dropdown-grid-wrapper" role="menu">
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="" class="dropdown-toggle collapsed">
+                                        <i class="fa fa-edit">
+                                        </i> Edit Profile
+                                    </a>
+                                </li>
 
-    <%- include(page) %>
+                                <li>
+                                    <a href="Login.asp" class="dropdown-toggle collapsed">
+                                        <i class="fa fa-sign-out">
+                                        </i> Log Out
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="dropdown" style="padding:13px;">
+                        <a style="border-right:1px solid #9d9d9d;line-height: 14px;padding-left: 0;margin-left: -10px;">&nbsp;</a>
+                    </li>
+                    <li style="padding:10px;">
+                        <a style="padding-left: 0;" id="fullscreen">
+                            <i class="fa fa-expand"></i>Full Screen
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-    <script type="text/javascript">
+        <nav class="navbar navbar-inverse navbar-custom-1 no-border-radius hidden-xs" id="scroller" role="navigation">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-left navbar-big-icon">
 
-        $('#navbar-collapse-1').bind('mousewheel DOMMouseScroll', function (e) {
-            var scrollTo = null;
+                        <li class="dropdown-wide">
+                            <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle">
+                                <i class="fa flaticon-accounts hidden-sm"></i><span>Accounts</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div id="Accounts" class="carousel slide">
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-3 col-sm-3" style="border-right: 1px solid rgba(255, 255, 255, 0.3);">
+                                                <ol class="carousel-indicators navbar-carousel-indicators" style="">
 
-            if (e.type == 'mousewheel') {
-                scrollTo = (e.originalEvent.wheelDelta * -1);
-            }
-            else if (e.type == 'DOMMouseScroll') {
-                scrollTo = 40 * e.originalEvent.detail;
-            }
+                                                    <li data-target="#Accounts" data-slide-to="0" class="active"><a href="#" class="">Import Accounts</a></li>
 
-            if (scrollTo) {
-                e.preventDefault();
-                $(this).scrollTop(scrollTo + $(this).scrollTop());
-            }
-        });
+                                                    <li data-target="#Accounts" data-slide-to="1"><a href="#" class="">Export Accounts</a></li>
 
+                                                    <li data-target="#Accounts" data-slide-to="2"><a href="#" class="">Import Accounts Reports</a></li>
 
-        function toggleFullScreen() {
-            if ((document.fullScreenElement && document.fullScreenElement !== null) || // alternative standard method
-                (!document.mozFullScreen && !document.webkitIsFullScreen)) { // current working methods
-                if (document.documentElement.requestFullScreen) {
-                    document.documentElement.requestFullScreen();
-                } else if (document.documentElement.mozRequestFullScreen) {
-                    document.documentElement.mozRequestFullScreen();
-                } else if (document.documentElement.webkitRequestFullScreen) {
-                    document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-                }
-            } else {
-                if (document.cancelFullScreen) {
-                    document.cancelFullScreen();
-                } else if (document.mozCancelFullScreen) {
-                    document.mozCancelFullScreen();
-                } else if (document.webkitCancelFullScreen) {
-                    document.webkitCancelFullScreen();
-                }
-            }
-        }
+                                                    <li data-target="#Accounts" data-slide-to="3"><a href="#" class="">Export Accounts Reports</a></li>
 
-        $("#fullscreen").click(function () {
-            toggleFullScreen();
-            $("#fullscreen i").toggleClass("fa-expand fa-compress");
-        });
+                                                    <li data-target="#Accounts" data-slide-to="4"><a href="#" class="">Sales & Receivables Accounting</a></li>
 
-        document.onkeydown = function (e) {
-            if (e.which == 122) {
-                $("#fullscreen i").toggleClass("fa-expand fa-compress");
-            }
-        }
+                                                    <li data-target="#Accounts" data-slide-to="5"><a href="#" class="">Sales & Receivables Reports</a></li>
 
-        //$(window).load(function () {
-        //    $(document).on('click', '.navbar .dropdown-menu', function (e) { e.stopPropagation(); });
-        //});
+                                                    <li data-target="#Accounts" data-slide-to="6"><a href="#" class="">Purchase & Payable Accounting</a></li>
 
-        $(document).ready(function () {
-            $(".toTop").css("display", "none");
+                                                    <li data-target="#Accounts" data-slide-to="7"><a href="#" class="">Statutory Reports Accounts</a></li>
 
-            $(window).scroll(function () {
-                if ($(window).scrollTop() > 0) { $(".toTop").fadeIn("slow"); } else { $(".toTop").fadeOut("slow"); }
-            });
+                                                    <li data-target="#Accounts" data-slide-to="8"><a href="#" class="">Brokerage/ Rebate Accounting a</a></li>
 
-            $(".toTop").click(function () {
-                event.preventDefault();
-                $("html, body").animate({ scrollTop: 0 }, "slow");
-            });
-        });
+                                                    <li data-target="#Accounts" data-slide-to="9"><a href="#" class="">Accounts</a></li>
 
-        /* fixed - navbar */
+                                                </ol>
+                                            </div>
+                                            <div class="col-lg-10 col-md-9 col-sm-9">
+                                                <div class="carousel-inner">
+                                                    <div class='item active'><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportDetentionEntry.asp'><span>Import BL Detention</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportInvoiceDraft.asp'><span>Import Draft Invoice</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportDraftInvoiceAdditional.asp'><span>Additional Draft Invoice</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportInvoice.asp'><span>Import Final Invoice</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportReceipt.asp'><span>Import Receipt Entry</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportSupplementaryInvoice.asp'><span>Import Supplementary Invoice</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImpCreditNote.asp'><span>Imp Credit Note</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportContainerReWork.asp'><span>Container Rework</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportForwarderInvoice.asp'><span>Forwarder Invoice</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportSecurityDeposit.asp'><span>Import Security Deposit</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImpFreightManifestRpt.asp'><span>Statement Of Import Manifest Charges</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportOtherLocationReceiptPosting.asp'><span>Import Other Location Receipt Posting</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportCommissionstmnt.asp'><span>Import Commission Statement</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMerchantHaulageReport.asp'><span>Merchant Haulage Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyNilAmountUpdate.asp'><span>Import Waiver</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportSupplementaryInvoice.asp'><span>Import Settlement Invoice</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyOtherLineSTBInvoice.asp'><span>STB Invoice</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportReceipt2.asp'><span>Import Receipt Entry New</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyProformaInvoice.asp'><span>Proforma Invoice</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyOriginalInvoice.asp'><span>Original Invoice</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportSuppInvoice.asp'><span>Export Supplementary Invoice</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportReceipt.asp'><span>Export Receipt Entry</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportOtherInvoice.asp'><span>Other Invoice</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportReceiptOtherLocationCollection.asp'><span>Export Other Location Collection</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExpCreditNote.asp'><span>EXP Credit Note</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyConcorLedgerMapping.asp'><span>Concor Ledger Mapping</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportInvoiceCreditRequest.asp'><span>Export Invoice Credit Request</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportCommissionStmnt.asp'><span>Export Commission</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDestManifestBLCharges.asp'><span>Destination Manifest BL Charges</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportOtherLocationReceiptPosting.asp'><span>Export Other Location Receipt Posting</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportCommissionstmnt.asp'><span>Export Commission Statement</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImpDailyCollAcctsStmntReport.asp'><span>Imports Invoice Register</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPendingImpExpReceiptRpt.asp'><span>Pending Receipt Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDamageCollectReport.asp'><span>Damage Collected Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportDetentionCollectionRpt.asp'><span>Detention Collection Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportRevenueRpt.asp'><span>Import Revenue Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyServiceTaxReport.asp'><span>Service Tax Collection</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVslHandlingStmt.asp'><span>Container Handling Fees</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportPendingInvoicesReport.asp'><span>Export Pending Invoices</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportInvoiceListReport.asp'><span>Invoice Issued Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportExportCreditNoteRpt.asp'><span>Credit Note Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExpDailyCollAcctsStmntReport.asp'><span>Invoice Register</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyChargesCollectionReport.asp'><span>Charges Collection Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVesselWiseOutstandingReport.asp'><span>Import Vesselwise Outstanding Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyLocationPrincipalWiseTHC.asp'><span>THC Collection Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExpFreightVsManifestRpt.asp'><span>Statement of Export Manifest Charges</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExpFreightManifestRpt.asp'><span>Export Manifested Freight Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMonthlySectorServiceDtlsExp.asp'><span>Export Monthly Sector Service Wise Details</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportInvoicePostingToFas.asp'><span>Approve Export Invoice Posting</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportReceiptCashPostingtoFas.asp'><span>Approve Export Cash Receipts</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportReceiptDepositSlipAndPosting.asp'><span>Approve Export Current Cheque Receipts</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportCreditNotePostingToFas.asp'><span>Approve Export Credit Note Posting</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportInvoicePostingToFas.asp'><span>Approve Import Invoice Posting</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportReceiptDepositSlipAndPosting.asp'><span>Approve Import Current Cheque Receipts</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyApproveImportCashReceiptPosting.asp'><span>Approve Import Cash Receipt</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportCreditNotePostingToFas.asp'><span>Approve Import Credit Note Posting</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExpDailyCollectionAcctStmtRpt.asp'><span>Export Daily Collection</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDailyCollectionAccountsStatementReport.asp'><span>Import Daily Collection</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBLHistoryOPSFAS.asp'><span>BL History (FAS)</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyChequeBounce.asp'><span>Cheque Bounce</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyChequeBounceRpt.asp'><span>Cheque Bounce Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDeletedReceiptRpt.asp'><span>Deleted Receipt Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href=''><span>Import Advance Adjustment Posting</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href=''><span>Export Advance Adjustment Posting</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImpDoIssued.asp'><span>Import DO Issued Not Issued Combined Report</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='Agencyserviceprojectiondtl.asp'><span>Service wise Vessel projection</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyConcorPosting.asp'><span>Concor Posting</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyRebateOutstandingReport.asp'><span>Statement of Vsl Voy wise  party wise Rebate</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyConcorUpload.asp'><span>Concor Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBrokeragePayments.asp'><span>Brokerage Payment Upload</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyRBISTNew.asp'><span>Detention RBI Statement</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExpImpRevenueStmnt.asp'><span>Revenue and Volume Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVoyageIncomeTaxDtls.asp'><span>Voyage Income Tax Details</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='Agencybrokeragepayablescreen.asp'><span>Brokerage Bill Update</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBrokeragePayablePosting.asp'><span>Brokerage Payable Posting</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPendingChequeIssues.asp'><span>Brokerage Payment</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href=''><span>Rebate Bill Update</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href=''><span>Rebate Payment & Cheque Issue</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href=''><span>Pending Rebate Report</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyChargesMaster.asp'><span>Charges Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCurrencyMaster.asp'><span>Daily Exchange Rate</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href=''><span>Surcharges Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='Agencybankmaster.asp'><span>Bank Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyServicetaxMaster.asp'><span>Service Tax Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyTHCMaster.asp'><span>THC Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVoyageExchangeRate.asp'><span>Voyage Exchange Rate</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyTHCMaster.asp'><span>THC Tariff Updation</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyIHCUpdation.asp'><span>IHC Tariff Updation</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyFinanceSectorMaster.asp'><span>Finance Sector Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySPWiseBudgetEntry.asp'><span>Budget Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='agencyIHCChargesmaster.asp'><span>IHC Charges Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportCommissionStmnt.asp'><span>Import Commission</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyTHCTarrifUpload.asp'><span>THC Updation Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyIHCUpload.asp'><span>IHC Tarrif Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExpCustomerBrokPrinWise.asp'><span>Brokerage Ledger Mapping</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyFcConfigMaster.asp'><span>FC Brokerage Config Percentage Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExpCustomerSecuPrinWise.asp'><span>Security Ledger Mapping</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySTforTHCIHCReport.asp'><span>THC IHC Service Tax Collection</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyKnockOffBillMatching.asp'><span>Knock off Bill Matching</span></a></li></ul></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
 
-        $(window).scroll(function () {
-            if ($(window).scrollTop() > 40) {
-                $('#scroller').addClass('navbar-fixed-top ');
-                $('#navbar-collapse .navbar-nav .dropdown').removeClass('open');
-                $('#navbar-collapse-1 ul').removeClass('navbar-big-icon');
-            } else {
-                $('#scroller').removeClass('navbar-fixed-top ');
-                $('#navbar-collapse-1 ul').addClass('navbar-big-icon');
-            }
-        });
+                        <li class="dropdown-wide">
+                            <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle">
+                                <i class="fa flaticon-admin hidden-sm"></i><span>Admin</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div id="Admin" class="carousel slide">
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-3 col-sm-3" style="border-right: 1px solid rgba(255, 255, 255, 0.3);">
+                                                <ol class="carousel-indicators navbar-carousel-indicators" style="">
 
-        //	start of search form script
+                                                    <li data-target="#Admin" data-slide-to="0" class="active"><a href="#" class="">Adminstration</a></li>
 
-        function FindFormAjax(OBJ) {
-            var FindForm = document.getElementById('displayFindForm')
-            if (LTrim(RTrim(OBJ.value)) != '') {
-                var rtnsearch1 = GetAjaxValueGlobalSearch("MENUSEARCHNEW_VER_1", "&searchword1=" + escape(OBJ.value))
-                FindForm.style.display = ''
-                FindForm.innerHTML = rtnsearch1
-            } else {
-                FindForm.style.display = 'none'
-                FindForm.innerHTML = ''
-            }
-        }
+                                                    <li data-target="#Admin" data-slide-to="1"><a href="#" class="">Help</a></li>
 
-        function GetAjaxValueGlobalSearch(FunName, PassValue) {
-            var passUrl = "AgencyAjaxServer.asp?FunName=" + FunName + PassValue
-            var handleStateChange = function () {
-                switch (xmlhttp.readyState) {
-                    case 0: // UNINITIALIZED
-                    case 1: // LOADING
-                    case 2: // LOADED
-                    case 3: // INTERACTIVE
-                        break;
-                    case 4: // COMPLETED
-                        break;
-                    default: alert("error");
-                }
-            }
-            var xmlhttp;
-            try { xmlhttp = new ActiveXObject("Msxml2.XMLHTTP"); }
-            catch (e) {
-                try { xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); }
-                catch (e) {
-                    try { xmlhttp = new XMLHttpRequest(); }
-                    catch (e) { xmlhttp = false; }
-                }
-            }
-            xmlhttp.onreadystatechange = handleStateChange;
-            xmlhttp.open("GET", passUrl, 0); // 0 async
-            xmlhttp.send(null);
-            return xmlhttp.responseText;
-        }
+                                                    <li data-target="#Admin" data-slide-to="2"><a href="#" class="">User Details</a></li>
 
-        //	close on escape key
-        $(document).keyup(function (event) {
-            if (event.which === 27) {
-                event.preventDefault();
-                closeSearch();
-            };
-            if ($('.search-field').val() != '') {
-                event.preventDefault();
-                openDropdown();
-            } else {
-                event.preventDefault();
-                closeDropdown();
-            }
-        });
+                                                    <li data-target="#Admin" data-slide-to="3"><a href="#" class="">eBMS</a></li>
 
-        //	Show Search if form is not active or input search empty
-        $('#search-nav button[type="button"]').click(function (event) {
-            if (!$("#search-nav").hasClass("active") || $('.search-field').val() === '') {
-                event.preventDefault();
-                openSearch();
-            }
-        });
+                                                    <li data-target="#Admin" data-slide-to="4"><a href="#" class="">General Admin</a></li>
 
-        $('.search-field').blur(function (event) {
-            event.preventDefault();
-            closeSearch();
-        });
+                                                </ol>
+                                            </div>
+                                            <div class="col-lg-10 col-md-9 col-sm-9">
+                                                <div class="carousel-inner">
+                                                    <div class='item active'><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='EditProfile.asp'><span>Edit Profile</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyOtherLocDocsView.ASP'><span>Documentation View Rights</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyControlMasterConfiguration.asp'><span>Control Master Configuration</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='VesselProjectionVsActual.asp'><span>Vessel Projection Vs Actual</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCreateHelpFile.asp'><span>Create Help</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCreateHelpFile.asp'><span>Create Help File</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCreateHelpFileExpress.asp'><span>Create Help File Express</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDepartmentMaster.asp'><span>Department Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyUserMaster.asp'><span>User Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMenuGroupMaster.asp'><span>Menu Group Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMenuMaster.asp'><span>Menu Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyAssignMenu2User.asp'><span>Assign Menu To User</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyUserHitsReport.asp'><span>User Hits Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySwitchLocationMaster.asp'><span>Switch Location Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyRoleConfigurationMaster.asp'><span>Role Configuration</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDashboardConfiguration.asp'><span>Dashboard / Rights Configuration</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMISMonthlytransactionRptnew.asp'><span>MIS Monthly Transaction Rpt</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='ebms.asp'><span>Terms Of Use</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVersionInfo.asp'><span>About</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='EBMSIssueLogMasterLatestRpt.asp'><span>Issue Log Master Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyIssueLogMasterNew.asp'><span>Add ScoreCard With Screen Shot Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyIssueLogMaster.asp'><span>Add ScoreCard</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='PtsPushFromClient.asp'><span>Issue Push Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyQueryRecording.asp'><span>Agency Query Recording</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='ConfigurationDetailReport.asp'><span>eBMS CONFIGURATION</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyManualMovesUpdate.asp'><span>MANUAL MOVES CHK BULK</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyAutoReportMailing.asp'><span>Auto Mail Config</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCustGreetings.asp'><span>Greeting</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyHtmlAutoSave.asp'><span>HTML Auto Save</span></a></li></ul></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--
+                        <li class="dropdown-wide">
+                            <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle">
+                                <i class="fa flaticon-breakbulkexport hidden-sm"></i><span>Break Bulk Export</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                  <div id="Break Bulk Export" class="carousel slide">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-3 col-sm-3" style="border-right: 1px solid rgba(255, 255, 255, 0.3);">
+                                            <ol class="carousel-indicators navbar-carousel-indicators" style="">
 
-        //	close form
-        $('#search-nav button[type="reset"]').click(function () {
-            event.preventDefault();
-            closeDropdown();
-            closeSearch();
-        });
+                                                <li data-target="#Break Bulk Export" data-slide-to="0"  class="active"  ><a href="#" class="">Break Bulk Export</a></li>
 
-        function openDropdown() {
-            $('#search-menu').addClass('open');
-        }
+                                            </ol>
+                                        </div>
+                                        <div class="col-lg-10 col-md-9 col-sm-9">
+                                            <div class="carousel-inner">
+                                            <div class='item active'><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVesselDepartureReport.asp'><span>Vessel Departure Report</span></a></li></ul></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </li>
+                            </ul>
+                        </li>
+                        -->
+                        <li class="dropdown-wide">
+                            <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle">
+                                <i class="fa flaticon-exports hidden-sm"></i><span>Exports</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div id="Exports" class="carousel slide">
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-3 col-sm-3" style="border-right: 1px solid rgba(255, 255, 255, 0.3);">
+                                                <ol class="carousel-indicators navbar-carousel-indicators" style="">
 
-        function closeDropdown() {
-            $('#search-menu').removeClass('open');
-        }
+                                                    <li data-target="#Exports" data-slide-to="0" class="active"><a href="#" class="">Export Customer Support</a></li>
 
-        function closeSearch() {
-            $('.search-field').val('');
-            $('.search-field').hide();
-            $('#search-nav').removeClass('active');
-            $('#search-nav button[type="reset"]').hide();
-            $('#search-nav button[type="button"]').show();
-        }
+                                                    <li data-target="#Exports" data-slide-to="1"><a href="#" class="">Export Operations</a></li>
 
-        function openSearch() {
-            $('#search-nav').addClass('active');
-            $('.search-field').show();
-            $('.search-field').focus();
-            $('#search-nav button[type="reset"]').show();
-            $('#search-nav button[type="button"]').hide();
-        }
+                                                    <li data-target="#Exports" data-slide-to="2"><a href="#" class="">Export Operations Reports</a></li>
 
-//	end of search form script
-    </script>
+                                                    <li data-target="#Exports" data-slide-to="3"><a href="#" class="">Export Operations Icd </a></li>
 
+                                                    <li data-target="#Exports" data-slide-to="4"><a href="#" class="">Export Documentation</a></li>
 
+                                                    <li data-target="#Exports" data-slide-to="5"><a href="#" class="">Export Reports General</a></li>
+
+                                                    <li data-target="#Exports" data-slide-to="6"><a href="#" class="">Export Report Customer Support</a></li>
+
+                                                    <li data-target="#Exports" data-slide-to="7"><a href="#" class="">Export Query</a></li>
+
+                                                    <li data-target="#Exports" data-slide-to="8"><a href="#" class="">Export Documentation Reports</a></li>
+
+                                                    <li data-target="#Exports" data-slide-to="9"><a href="#" class="">Export Mis Reports</a></li>
+
+                                                    <li data-target="#Exports" data-slide-to="10"><a href="#" class="">Switch BL Documentation</a></li>
+
+                                                </ol>
+                                            </div>
+                                            <div class="col-lg-10 col-md-9 col-sm-9">
+                                                <div class="carousel-inner">
+                                                    <div class='item active'><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportBooking.asp'><span>Booking</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyReleaseOrderMum.asp'><span>Release Order</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href=''><span>Booking EDI Upload INTRAA</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMergeBooking.asp'><span>Merge Booking</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVoyageLockImport.asp'><span>BL Lock Import</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBookingForcastReport.asp'><span>Booking Forecast Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBookingQuantityUpdate.asp'><span>Booking Quantity Update</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyNewVoyageMaster.asp'><span>Voyage Schedule</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMappingCustomer.asp'><span>Customer Mapping</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBookingFromCustomer.asp'><span>Booking From Customer</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyReleaseOrderExtension.asp'><span>Release Order Extension</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVoyageEGMPCNUMDetails.asp'><span>Update Voyage EGM and PC Details</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyShipperEnquiry.asp'><span>Enquiry</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyUploadKmtcBookingEdiExcel.asp'><span>Booking Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImpManifestXLSUpload.asp'><span>Imp Manifest XL Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='EvaluationReport.asp'><span>Customer Report Saeed</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='Excel_into_Oracle.asp'><span>Excel to Oracle</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyContainerEntry.asp'><span>Container Entry Booking Acceptance</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyShippingBill.asp'><span>Shipping Bill</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMTBooking.asp'><span>Empty Booking</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyAdvanceListEDIEXP.asp'><span>Export Advance List CS</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyLoadListModify.asp'><span>Shift Containers</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportBLShift.asp'><span>BL Shift</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyShippedOnBoardConfirmation.asp'><span>Shipped On Board</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyContainerPossitionUpload.asp'><span>Container Position Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportShutOut.asp'><span>ShutOut</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMateReceiptChn.ASP'><span>Mate Receipt</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyGenerateTDRWithFinalize.asp'><span>Shutout Update</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyShippingBillUpload.asp'><span>Shipping Bill Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyGenerateTDR.asp'><span>Generate TDR</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMRGUpload.asp'><span>MRG Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDemanifest.asp'><span>De Manifest</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportContainerReWork.asp'><span>Export Container Rework</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportBookingSplit.asp'><span>Split Booking</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportSplitBL.asp'><span>Split BL</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyForm13Upload.asp'><span>Form 13 Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href=''><span>CTM Export</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyIHCPaymentFundsExp.asp'><span>Payment Fund Request- Exp</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyGenerateTDRNew.asp'><span>TDR New</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyShiftContainerBooking.asp'><span>Container & Rate Shift</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImcoRevisionUpload.asp'><span>Imco Revision Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyAdvanceListEDIEXP_Ops.asp'><span>Export Load List</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='LinerFlowTest1.ASP'><span>Export Operations</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySPMnthWiseBudgetEntry.asp'><span>Month wise Budget Entry</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='linerflow.asp'><span>Export Flow</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCntrMappingUnmapping.asp'><span>Container Mapping Unmapping</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyLead2CustConversion.asp'><span>Lead to Customer Conversion</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyShippingbillSplit.asp'><span>Shipping Bill Split</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportBookingShift.asp'><span>Booking Shift</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyOffHireCntrUpload.asp'><span>Container Remarks Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyLandingCertificate.ASP'><span>Landing Certificate</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyManifestReview.asp'><span>Rate Agreement Confirmation</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyLineContainerMasternew.asp'><span>Line Container Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyLoadingConfirmation.asp'><span>Loading Confirmation</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyAllocationVsBookingVsGatedInRpt.asp'><span>Allocation Vs Booking</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyOtherTDRDetail.asp'><span>EAL Updates</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExpressBLNew.asp'><span>Express BL</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyKYCUpload.asp'><span>CUSTOMER KYC UPLOAD</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyRateRevisionNew.asp'><span>Rate Agreement Revision</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyFreightManifestUpload.asp'><span>Freight Manifest Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportManifestEntryNEW.asp'><span>Export Manifest Entry</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySaudiExportManifestEdi.asp'><span>Saudi EDI Export</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVoyageReportNew.asp'><span>Voyage Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBookedVSPickedReport.asp'><span>RO Issued Vs Picked and Not Picked Containers</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVesselPlanning.asp'><span>Vessel Planning</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyIcdLiftingProspects.asp'><span>ICD Liftings and prospective loading</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='Agencysalespersonmisteusreport.asp'><span>Sales personwise Loading report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyAgentWiseLoadingReport.asp'><span>Destination Loading report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCustomerMISTeusReport.asp'><span>Customer wise Loading report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='Agencypolwiseloadingreport.asp'><span>Location wise Loading report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVesselVoyageWiseLoadingReport.asp'><span>Vessel Voyage Loading Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportLineWiseContainerHandled.asp'><span>Summary of Line wise container Handled Exports</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMasterReport.asp'><span>UDR</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMRGExportReport.asp'><span>MRG Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyFPODContainerSummaryReport.asp'><span>POR / POL FPOD Container Summary</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyAdditionalChargeRPT.asp'><span>Addtional Charge Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyFPODWiseListReport.asp'><span>FPOD Wise List Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDangerousCargoList.asp'><span>Dangerous Cargo List</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCBFReport.asp'><span>CBF Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBLRegisterReport.asp'><span>BL Register</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyF13Report.asp'><span>Form 13 Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCTMReport.asp'><span>CTM Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPrincipalLocationWiseConsolReport.asp'><span>Principal Wise Location Wise Consol Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySummaryOfBrokerageOutstandingReport.asp'><span>Export Vessel Voyagewise Brokerage</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExpShutOutReport.asp'><span>Exp Shut Out Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyACDContainerLoadListReport.asp'><span>ACD Container Load List</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCntrWiseBLListReport.asp'><span>Container Wise BL Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyContainersWithoutBL.asp'><span>Containers WIthout BL Mapped</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportHoldContainersRpt.asp'><span>Hold Containers</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyELLVsShippingVsBlDiff.asp'><span>ELL Vs Shipping Bill Vs BL</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyTranshipmentApplication.asp'><span>Transhipment  Application</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDepartureReport.asp'><span>Departure Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBkgvsGateInDiscrepancyRpt.asp'><span>Gate In Discrepancy Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCntrPositionDescripency.asp'><span>Container Position Discrepancy Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyEnquiryReport.asp'><span>Enquiry  Report</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyForm11forICD.asp'><span>Form 11 Request</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyForm13.asp'><span>Form 13</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyForm11Bom.asp'><span>Form 11 Confirmation</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyAdvanceListExpICD.asp'><span>Export Data Push to Load port</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyAdvListFetchFrmICDExp.asp'><span>Exp Fetch Adv List Edi</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDraftBL.asp'><span>Draft Bill Of Lading</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBillOfLading.asp'><span>Bill Of Lading</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPartBL.asp'><span>Part Bill Of Lading</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href=''><span>BL/ Manifest EDI Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyManifestGeneration.asp'><span>Export Manifest Generation</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBLManifestCorrecter.asp'><span>BL Manifest Corrector</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href=''><span>Perishable List</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyHazManifestImportReport.asp'><span>DG Manifest Generation</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href=''><span>ODC Manifest Generation</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href=''><span>Reefer Manifest</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href=''><span>Freight Manifest Corrector</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href=''><span>Freight Manifest Corrector Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyEGMtoCustomes1_5.asp'><span>EGM To Customs</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href=''><span>EGM Check List</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyRequestForQuoteUpload.asp'><span>Request For Quote Approval</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExpCTM.asp'><span>Correction To Manifest - CTM</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyHouseBL.asp'><span>House BL</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyOtherLocationBL.asp'><span>Other Location BL</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExpBlStampMaster.asp'><span>BL Stamp Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBLNumberUpdater.asp'><span>Modify BL Number</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyUSDInvoiceFormat.asp'><span>USD INVOICE</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySRRReport.asp'><span>Rate Agreement Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPortPairReport.asp'><span>Port Pairs Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPerishableList.asp'><span>Perishable Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyShippingBillReport.asp'><span>Shipping Bill Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyGateClosingtimeComparisionReport.ASP'><span>Voyage Wise Gate Closing</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCSIPerformanceReport.asp'><span>CSI Performance Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyTerminalGateinReport.asp'><span>Terminal Gatein Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyRawStatsReport.asp'><span>Raw Stats Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyWeeklyActivityReport.asp'><span>Location Wise Service Weekly Report</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBookingReport.asp'><span>Booking Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportBookingsInHandRpt.asp'><span>Bookings In Hand</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportBookingsDatewiseRpt.asp'><span>Booking Datewise Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportBookingStatus.asp'><span>Export booking and BL status</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportPendingList.asp'><span>Export Pending Tracking</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBookingCancellationReportNew.asp'><span>Booking Cancellation Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportBookingWriteOff.asp'><span>Booking Write Off</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDraftBookingRpt.asp'><span>Draft Booking Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBookingStatusReport.asp'><span>KLINE Box Report</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyContainerQueryExportReport.asp'><span>Container Query Export</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBLEnquiryExportReport.asp'><span>BL Enquiry Export</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBLIssuedReport.asp'><span>Export BL Search</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMarketRatesUpload.asp'><span>Market Rates Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVoyageServiceWiseReport.asp'><span>Voyage Wise  Service Wise Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBLContainersTracking.asp'><span>BL Containers Tracking</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExpSealDiscrepancyReport.asp'><span>Export Seal Discrepancy List</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBLReleasedStatusReport.asp'><span>BL Release Status</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyRemittanceApplication.asp'><span>Remittance Application</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyRecapRptChennai.asp'><span>Recap Cargo Report Chn</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExpSalesPersonBookingPerfRep.asp'><span>Sales Person Booking Performance Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportKHAMBADKONEReport.asp'><span>Khambadkone Report(Export)</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCommodityWiseRevenueRpt.asp'><span>Commoditywise Revenue Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMasterReport.asp'><span>Master Report</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySwitchBL.asp'><span>Switch BL</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySwitchBLManifestGeneration.asp'><span>Switch BL Manifest</span></a></li></ul></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown-wide">
+                            <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle">
+                                <i class="fa flaticon-imports hidden-sm"></i><span>Imports</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div id="Imports" class="carousel slide">
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-3 col-sm-3" style="border-right: 1px solid rgba(255, 255, 255, 0.3);">
+                                                <ol class="carousel-indicators navbar-carousel-indicators" style="">
+
+                                                    <li data-target="#Imports" data-slide-to="0" class="active"><a href="#" class="">Import Manifest Update</a></li>
+
+                                                    <li data-target="#Imports" data-slide-to="1"><a href="#" class="">Import Customer Support</a></li>
+
+                                                    <li data-target="#Imports" data-slide-to="2"><a href="#" class="">Import Query</a></li>
+
+                                                    <li data-target="#Imports" data-slide-to="3"><a href="#" class="">Import Operations Reports</a></li>
+
+                                                    <li data-target="#Imports" data-slide-to="4"><a href="#" class="">Import Operations</a></li>
+
+                                                    <li data-target="#Imports" data-slide-to="5"><a href="#" class="">Import EDI - Port And Customs</a></li>
+
+                                                    <li data-target="#Imports" data-slide-to="6"><a href="#" class="">MLO IGM</a></li>
+
+                                                    <li data-target="#Imports" data-slide-to="7"><a href="#" class="">Import Documentation</a></li>
+
+                                                </ol>
+                                            </div>
+                                            <div class="col-lg-10 col-md-9 col-sm-9">
+                                                <div class="carousel-inner">
+                                                    <div class='item active'><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportManifestEntry.asp'><span>Import Manifest Entry</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyManifestChanges.asp'><span>Manifest Changes</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href=''><span>Manifest Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyUploadManifestChanges.asp'><span>Manifest Upload Changes</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyApproveManifest.asp'><span>Approve Manifest</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportBlStatus.asp'><span>BL Corrector</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyTPTransfer.asp'><span>TP Transfer</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyItemCancellation.asp'><span>Item Cancellation</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyIMPContainerPossitionUpload.asp'><span>Import Container Position Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyTDRUploadNew.asp'><span>TDR Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyRestowBL.asp'><span>Restow BL</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='Agencypremanifestbl.asp'><span>Load Port Pre Alert</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyOtherLocationManifest.asp'><span>Other Location Manifest</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImpManifestChassisUpload.asp'><span>Chassis Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPendingShippingBill.asp'><span>Pending Shipping Bill (Export Manifest Entry)</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportManifestUploadSitpro.asp'><span>NYK SITPRO</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCOSCOFreightManifestUpload.asp'><span>COSCO Freight Manifest Upload</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportCustomBond.asp'><span>Custom Bonded Storage Letter</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyAdditionalChargeAdviceNew.asp'><span>Additional Charge Advice</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportInvoiceCreditRequest.asp'><span>Import Invoice Credit Request</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='Advertisement.asp'><span>Advertisement</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportDOCheckList.asp'><span>DO Check List</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyChangeDeliveryMode.asp'><span>DO - Change Delivery Mode</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCustomerWiseReeferSup.asp'><span>Customer Wise Support</span></a></li></ul></div><div class='item '>
+                                                        <ul>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBLEnquiryImportReport.asp'><span>BL Enquiry Import</span></a></li>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImpReceiptQuery.asp'><span>Imports Receipt Query</span></a></li>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyConWiseImpSummary.asp'><span>Consignee Wise Imports Summary</span></a></li>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySectorWiseImpSummaryRpt.asp'><span>Sectorwise Summary Report</span></a></li>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportLineWiseContainerHandled.asp'><span>Summary of Containers Handled Imports</span></a></li>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportCargoTypeWiseReport.asp'><span>Import Vessel Log Book</span></a></li>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCargoArrivalNoticeReport.asp'><span>Cargo Declaration Report</span></a></li>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportFreightCollectReport.asp'><span>Freight Collect Report</span></a></li>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyIMPMonthSectorWiseSummaryHMM.asp'><span>Portwise Import Summary</span></a></li>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySealDiscrepancyReport.asp'><span>Seal Discrepancy Report</span></a></li>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyConsigneeWiseMntWiseVolRevRpt.asp'><span>Consignee Wise Imports Summary</span></a></li>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'>
+                                                                <a href='AgencyImpLineWiseCfsDetailsRpt.asp'>
+                                                                    <span>
+                                                                        Linewise Import Cntr Movements To CFS
+                                                                    </span>
+                                                                </a>
+                                                            </li>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyOriginWiseMonthWiseVolumeRpt.asp'><span>Location Wise Month Wise Volume Import Rpt</span></a></li>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImpSDReceiptCollection.asp'><span>Security Deposit Receipt Collection</span></a></li>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyWeekWiseVoyageReport.asp'><span>Week Wise Voyage Report</span></a></li>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDoStatementForStampDuty.asp'><span>Do Statement For Stamp Duty</span></a></li>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPeriodicSummaryReport.asp'><span>Stamp Duty Periodic Summary Report</span></a></li>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyStatementOFStampDutyFranked.asp'><span>Statement OF DO Stamp Duty Franked</span></a></li>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyLocationWiseStampDutyFranked.asp'><span>Location Wise Stamp Duty Franked</span></a></li>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyTransportBond.asp'><span>Transport Bond</span></a></li>
+                                                            <li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBLCheckList.asp'><span>BL CheckList</span></a></li>
+                                                        </ul>
+                                                    </div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyReExportBondCancellationReport.asp'><span>Bond Cancellation Update</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyIcdDischargeImportCntrRpt.asp'><span>ICD Discharge Import Containers</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyContainerCheckList.asp'><span>Container Checklist/ Master BL House BL difference</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportICDWiseCntrSummary.asp'><span>ICD Wise Imp Cntr Summary</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPolWiseImportCntrRpt.asp'><span>POL wise Imp container Discharged Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPolWiseImportCntrRpt.asp'><span>Import container Movement to CFS</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportArrivalNoticeReport.asp'><span>Arrival Notice Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPendingDeliveryOrder.asp'><span>Pending DO`s</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDOIssuedReportNew.asp'><span>DO Issued Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyimportLongidlingReport.asp'><span>Discharge Long Idling Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyReExportBondCancellationReport.asp'><span>Bond Cancellation Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyContainerMisuseReport.asp'><span>Misuse of containers</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyAdvanceListEDISummary.asp'><span>REF HAZ SUMMARY</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyArrivalNoticeDEL.asp'><span>Arrival Notice</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPublicNoticeRickmers.asp'><span>Public Notice</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyNoticetoconsigneerickmers.asp'><span>Arrival Notice Rickmers</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMTYDepotReport.asp'><span>DO Container Validity Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyReExportBondCancellationReport.asp'><span>Boat Note</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyThirdPartyCFSSummary.asp'><span>Third Party CFS Summary</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImpICDContainerMovementReport.asp'><span>Import ICD Container Movement Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyFeppReport.asp'><span>BL wise Gross Freight Summary</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='MTDBaplieDiscrepancyRpt.asp'><span>BAPLIE Discrepancy Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportManifestPrint.asp'><span>Import Manifest Generation</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportPendingInvoicesReport.asp'><span>Import Pending Invoice</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgenctCntrWeightWiseReport.asp'><span>Container Wise Weight Wise Vessel Summary</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyLiftingReport.asp'><span>Import Lifting Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyTerminalDepartureReport.asp'><span>Terminal Departure Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCifFobSummary.asp'><span>Month Wise CIF FOB Summary Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImpVesWiseServiceWiseSummary.asp'><span>IMPORT PERIODIC VESSEL WISE SERVICE WISE SUMMARY</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDirectConsoleFillingRpt.asp'><span>Direct Console Filling Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImpNilAmtReport.asp'><span>Import Nil Amount Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportBLRegReport.asp'><span>CONSIGNEE WISE BL QUERY</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportDailyDestiffungReport.asp'><span>Daily De stuffing Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImpContainerDetails.asp'><span>Import Container Status</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyEXPLiftingReport.asp'><span>Export Lifting Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyLineNoChgSlabMaster.asp'><span>Line No Charges Slab Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyTrGrTblDtlReport.asp'><span>TrGr Table Detail Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDoValidityUpdate.asp'><span>Do validity update</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyUserDeActiveLogReport.asp'><span>User Active DeActive Report</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyTSNomination.asp'><span>TS Nomination</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyIntimationtocfs.asp'><span>Intimation to CFS</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCreateRestowContainer.asp'><span>Create Restow Container</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCustomsBondINBOM.asp'><span>CMC Landing Permission Letter</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='MTDBAPLIEUpload.asp'><span>BAPLIE Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyUpdateRestowContainer.asp'><span>Update Restow Container</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyIHCPaymentFunds.asp'><span>Payment Fund Request- Imp</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPushImpManifest.asp'><span>Push Manifest</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyFreightBill.asp'><span>Freight Bill</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBondAllocation.asp'><span>Bond Allocation</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportManifestEntrySlot.asp'><span>SLOT Manifest</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='LinerFlowImp.asp'><span>Import Flow</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyJobOrderUpdateTEST.asp'><span>Job Test</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCONCORForwardingNote.asp'><span>Forwarding Note</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyConcorHazMarking.asp'><span>Concar Haz Marking</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMonthlyCustomerWiseSummary.asp'><span>Monthly Customer Wise Summary</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyOnlineBlStatus.asp'><span>Online BLs for Invoicing</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCTMChargesChanges.asp'><span>CTM for Prepaid Charges</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyStandAloneSecurityDeposit.asp'><span>Stand Alone Security Deposit</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBRKBLKRemainderNoticeNew.asp'><span>Breakbulk Reminder Notice</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMTManifestUpload.asp'><span>MTY Manifest Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMNRAdditionalCharges.asp'><span>MNR New</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportRCTBooking.asp'><span>RCT Booking</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDeliveryOrderNew.asp'><span>Delivery Order</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVesselStatusReport.asp'><span>Vessel Status Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyARFaxStatusReadUpdate.asp'><span>Fax Status Update</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyForeignTPEDI.asp'><span>Foreign TP EDI</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyNILIGMToCustoms.asp'><span>NIL IGM To Customs</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyAdvanceListEDI.asp'><span>DISCHARGE LIST</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyIGMCorrector.asp'><span>IGM Correction</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyChnIGMAmendmentLetter.asp'><span>IGM Amendment Letter</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportManifestUploadKLINE.ASP'><span>Gapp BLOB EDI Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBLWiseCntrListReport.asp'><span>BL Wise Container List</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyIGMtoCustomesICES1_5.asp'><span>IGM to Customs ICES1 5</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBLStatusUpdate.asp'><span>BL Status Update</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='Agencyprincipalbondsignedmaster.asp'><span>Bond Filing</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='EbmsSaudiImportManifestEdi.asp'><span>Import Saudi Manifest EDI</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyManifestUploadEDICUSCAR.asp'><span>CUSCAR Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyRateRequestUpload.asp'><span>Rate Agreement Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBLFreeDaysUpload.asp'><span>Free Days Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyContWithConsiReport.asp'><span>Detention Tracking</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMLOItemAllocation.asp'><span>MLO Item Allocation</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMLOEDIUpload.asp'><span>MLO IGM Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMLOIGMtoCustomesICES1_5.asp'><span>MLO IGM To Customs</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportDG.asp'><span>HAZ Manifest</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyODCList.asp'><span>ODC Manifest</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyReeferCargoList.asp'><span>Reefer Manifest</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyContaineronHold.asp'><span>BL ON HOLD</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportBlShift.asp'><span>Import BL Shift</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyConsolBLUpload.asp'><span>Consol BL Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportCTM.asp'><span>Pre Manifest CTM</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyConcorXMLCreation.asp'><span>Concor XML DO</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySwitchBLReport.asp'><span>Switch BL Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMasterBlMailSEND.asp'><span>House Bl Submission Notice</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportManifestUploadCUL.asp'><span>CUL Manifest Upload</span></a></li></ul></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown-wide">
+                            <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle">
+                                <i class="fa flaticon-inventory hidden-sm"></i><span>Inventory</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div id="Inventory" class="carousel slide">
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-3 col-sm-3" style="border-right: 1px solid rgba(255, 255, 255, 0.3);">
+                                                <ol class="carousel-indicators navbar-carousel-indicators" style="">
+
+                                                    <li data-target="#Inventory" data-slide-to="0" class="active"><a href="#" class="">Inventory</a></li>
+
+                                                    <li data-target="#Inventory" data-slide-to="1"><a href="#" class="">Inventory Reports</a></li>
+
+                                                    <li data-target="#Inventory" data-slide-to="2"><a href="#" class="">Inventory MIS Reports</a></li>
+
+                                                </ol>
+                                            </div>
+                                            <div class="col-lg-10 col-md-9 col-sm-9">
+                                                <div class="carousel-inner">
+                                                    <div class='item active'><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyManualMoves.asp'><span>Movement Register</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMNREstRequest.asp'><span>MNR Request</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyContainersUpload.asp'><span>Container Master Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyManualMovesUpload.asp'><span>Movement Register Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCodeco.asp'><span>Codeco</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCoarriEDIUpload.asp'><span>Coarri</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='LineMaintenanceandRepairsRequestApproval.asp'><span>MNR Approval</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyLineActivityMaster.asp'><span>Activity Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyGappMovementUpload.asp'><span>Gapp Movement Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMaintenanceandRepairRequest.asp'><span>MNR</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyJobOrderUpdate.asp'><span>Job Order Update</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyContainerMovementNew.asp'><span>Container Movement Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCntrWithShipperReport.asp'><span>Containers With Shipper Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCntrWithConsigneeReport.asp'><span>Containers with Consignee</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyContainerHistoryRPT.asp'><span>Container History / Tracking</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyInventoryStockOnBoard.asp'><span>Inventory Stock Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyRBIManifestGenerationNew.asp'><span>RBI Manifest Generation New</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyIdleContainerRPT.asp'><span>Ageing Container Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyContainerControlRPTnew.asp'><span>Container Control Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyNonOperativeRefeerHistory.asp'><span>Operative and Non Operative Reefer History</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyConsolBLGenReport.asp'><span>Consol BL Gen Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVendorWiseLocWiseCntrMove.asp'><span>Vendorwise Job Order Summary</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMonthlySectorServiceDtls.asp'><span>Monthly Sector Service Wise Details</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyTPCCollectReport.asp'><span>TPC Collection Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDailyInventoryStatusReport.asp'><span>Daily Inventory Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExpImpMISReport.asp'><span>NCR MIS Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyReShipmentBondReport.asp'><span>Vessel Application</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMnRReportNewFormat.asp'><span>MNR Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPeriodicReportofStatusofBond.asp'><span>Bond Cancellation Status</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyUnitArrivalWiseBondReport.asp'><span>Unit Wise Bond Arrival Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMISTurnAroundReport.asp'><span>MIS Turn Around Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImbalanceReportNew.asp'><span>ImBalance Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySplEquipmentInOutReport.asp'><span>Special Equipment In/Out Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMBLHBLConsolidatedReport.asp'><span>HBL & MBL Consolidated Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyServiceWiseCountryWiseTeusSummary.asp'><span>Service Wise Country Wise Teus Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDestuffVsDoDetails.asp'><span>Container Destuff Vs DO Details</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMisWestZoneReport.asp'><span>MIS Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AvailabilityVsPerformanceReport.asp'><span>Allocation Vs Performance</span></a></li></ul></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown-wide">
+                            <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle">
+                                <i class="fa flaticon-masters hidden-sm"></i><span>Masters</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div id="Masters" class="carousel slide">
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-3 col-sm-3" style="border-right: 1px solid rgba(255, 255, 255, 0.3);">
+                                                <ol class="carousel-indicators navbar-carousel-indicators" style="">
+
+                                                    <li data-target="#Masters" data-slide-to="0" class="active"><a href="#" class="">Masters</a></li>
+
+                                                    <li data-target="#Masters" data-slide-to="1"><a href="#" class="">General Masters</a></li>
+
+                                                    <li data-target="#Masters" data-slide-to="2"><a href="#" class="">Operations</a></li>
+
+                                                </ol>
+                                            </div>
+                                            <div class="col-lg-10 col-md-9 col-sm-9">
+                                                <div class="carousel-inner">
+                                                    <div class='item active'><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyLocalFees.asp'><span>Local Fees</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCFSGroupCodeForAdvEdiMaster.asp'><span>Advance List EDI Group Code</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyRailOperatorMaster.asp'><span>Rail Operator Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDestiManChargMaster.asp'><span>Destination THC Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCntrTypePortISOMaster.asp'><span>Container Type Port ISO</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBondFilingMaster.asp'><span>Bond Filing Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportDOClauses.asp'><span>Export DO Clauses</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySalesSectorMaster.asp'><span>Sales Sector Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySectorBudgetMaster.asp'><span>Sales Sector Budget Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyConsigneeMaster.asp'><span>Consignee Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyNotifyMaster.asp'><span>Notify Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCustomeLocationMaster.asp'><span>Custom Location Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyTerGateInCompUpload.asp'><span>Terminal Gate In Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPincodeMaster.asp'><span>Pin Code Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBrokerageMaster.asp'><span>Brokerage Party Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyHighlighterMaster.asp'><span>Concor Haz Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySubSectorMaster.asp'><span>Sub Sector Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyHaulaugeMappingMaster.asp'><span>Haulage Mapping Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyLocalFeesLCL.ASP'><span>Local Fees LCL</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='agencydefaultransportmode.asp'><span>Default Transport Mode Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDefaultVendor.asp'><span>Vendor Location Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDOPrintRemarks.asp'><span>DO PRINT ADDRESS</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgenyLongIdleCntrRemarksUpdate.asp'><span>LONG STAY CONTAINER REMARKS UPDATE</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImcoMasterNew.asp'><span>IMO Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyLineNoChgSlabMaster.asp'><span>Line Number Charges Slab Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyManifestRateUpdate.asp'><span>Manifest Rate Update</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='shahulmasterform.asp'><span>Shahul Master Form</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyServiceTaxConfigChargeWise.asp'><span>Service Tax Config ChargeWise</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPWDConfigMaster.asp'><span>PWD CONFIG MASTER</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyAssignMenuwiseUser.asp'><span>Assign Menu Wise User</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPrintPathRemove.asp'><span>Print Path Remove</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyUserMenuDetailReport.asp'><span>User Menu Detail Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportManifestEntry.asp'><span>SD Export Manifest Entry</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySaudiEDIExport.asp'><span>Not Required</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDemoShippmentDetails.asp'><span>Shipper Details</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='EnquiryReport.asp'><span>Enquiry Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyIncidentReport.asp'><span>Incident Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyClaimsReport.asp'><span>Claims Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDivisionMaster.asp'><span>Division Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='LineTypeofLeaseMaster.asp'><span>Lease Type Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='LineLeasingCompanyMaster.asp'><span>Leasing Company Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='LineFeederMaster.asp'><span>Line Feeder Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='LineAgencyRateContractMaster.asp'><span>Agency Rate Contract Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyStackMaster.asp'><span>Stack Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBLIssuedReportnew1.asp'><span>Export BL Search New</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='LineContainerMaster.asp'><span>Line Container Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyrateRequestGR.asp'><span>SRR TEST</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='LeadCustomerCategoryMaster.asp'><span>Customer Category Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyAuthoritySignatureMaster.asp'><span>Authority Signature Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExportBookingDraft.asp'><span>Draft Booking</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVesselAgentMaster.asp'><span>Vessel Agent Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCustomerReferencesMaster.asp'><span>Customer References Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyClaimRequest.asp'><span>Claim Request</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPendingClaimApproval.asp'><span>Claim Pending Approval</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPendingClaimSettelment.asp'><span>Claim Pending Settelment</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='NadeemCustomerMaster.asp'><span>CUSTOMER NAD MASTER</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPravinFrame.asp'><span>Pravin Frame Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPortContractMaster.asp'><span>Port Contract Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySaudiDischargeArea.asp'><span>Saudi Discharge Area</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyClaimRecordReport.asp'><span>Claim Record Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySaudiSTBTariff.asp'><span>Saudi STB Tariff</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='VessellogReport.asp'><span>Vessel log Report</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCityMaster.asp'><span>City Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyFeederMaster.asp'><span>Vessel Operator Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyTransportationMaster.asp'><span>Transporter Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCountryMaster.asp'><span>Country Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='Agencylocationmaster.asp'><span>Location Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='agencysectormaster.asp'><span>Sector Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyStateMaster.asp'><span>Province Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyServiceMaster.asp'><span>Service Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCargoTypeMaster.asp'><span>Cargo Type Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPackageMaster.asp'><span>Packages Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyProductMaster.asp'><span>Product Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDoFeesSlabMaster.asp'><span>DO Fees Slab Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVesselMaster.asp'><span>Vessel Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImpDOChecklistMaster.asp'><span>Import DO Check List Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBLTypeMaster.asp'><span>BL Type Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVesselTypeMaster.asp'><span>Vessel Type Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyContainerCategoryMaster.asp'><span>Container Category Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyRegionMaster.asp'><span>Region Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyAutoMailConfig.asp'><span>Configure Mail</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='EmailMaster.asp'><span>Email Master</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyContainerMaster.asp'><span>Container Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCHAMaster.asp'><span>CHA Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDemurrageCostMaster.asp'><span>Import Detention Tariff</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPortStorageCostMasterNew.asp'><span>Import Port Storage Tariff</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDemurrageMasterExport.asp'><span>Export Detention Tariff</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPortMaster1.asp'><span>Port Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyContainerSizeMaster.asp'><span>Container Size Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyWashingCharges.asp'><span>Washing Charges</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyContainerTypeMaster.asp'><span>Container Type Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCFSLocationMaster.asp'><span>Movement Location Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyStampDutyDeposit.asp'><span>Stamp Duty Deposit</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExtraChargeMaster.asp'><span>Additional Charges</span></a></li></ul></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown-wide">
+                            <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle">
+                                <i class="fa flaticon-pricing hidden-sm"></i><span>Pricing</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div id="Pricing" class="carousel slide">
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-3 col-sm-3" style="border-right: 1px solid rgba(255, 255, 255, 0.3);">
+                                                <ol class="carousel-indicators navbar-carousel-indicators" style="">
+
+                                                    <li data-target="#Pricing" data-slide-to="0" class="active"><a href="#" class="">Pricing</a></li>
+
+                                                </ol>
+                                            </div>
+                                            <div class="col-lg-10 col-md-9 col-sm-9">
+                                                <div class="carousel-inner">
+                                                    <div class='item active'><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyRateRequest2.asp'><span>Rate Agreement</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyProformaRateRequestApproval.asp'><span>Rate Request Approval</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVendorMaster.asp'><span>Vendor Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCommodityMaster.asp'><span>Commodity Group Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyLineSurChargesMaster.asp'><span>Line Surcharges Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMRGMaster.asp'><span>Minimum Rate Guidelines (MRG) / Published Rates</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCustomerGroupMaster.asp'><span>Customer Group Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySrrAutoSurchargeMaster.asp'><span>Rate Agreement Auto Surcharge Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySRRExtension.asp'><span>Rate Agreement Extension</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='LineLeasingCompanyContractMasterNew.asp'><span>Leasing Company Contract Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='LineLeaseBookingRef.asp'><span>Leasing Booking Reference</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='VGMUpload.asp'><span>VGM Upload</span></a></li></ul></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown-wide">
+                            <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle">
+                                <i class="fa flaticon-sales hidden-sm"></i><span>Sales</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div id="Sales" class="carousel slide">
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-3 col-sm-3" style="border-right: 1px solid rgba(255, 255, 255, 0.3);">
+                                                <ol class="carousel-indicators navbar-carousel-indicators" style="">
+
+                                                    <li data-target="#Sales" data-slide-to="0" class="active"><a href="#" class="">Sales</a></li>
+
+                                                    <li data-target="#Sales" data-slide-to="1"><a href="#" class="">Sales Reports</a></li>
+
+                                                </ol>
+                                            </div>
+                                            <div class="col-lg-10 col-md-9 col-sm-9">
+                                                <div class="carousel-inner">
+                                                    <div class='item active'><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyShipperMaster.asp'><span>Customer Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCustomerCreditRequest.asp'><span>Customer Credit Request</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVoiceOfCustomers.asp'><span>eSales Voice of Customer</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCustomerCreditApprove.asp'><span>Pending Credit Request Approve</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencySalesLeadMaster.asp'><span>Lead Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMyLeadList.asp'><span>My Leads List</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDeactivateLeadCustomer.asp'><span>Deactivate Lead</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCustomerPlantMaster.asp'><span>Customer Plant Master</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPlanningReport.asp'><span>Sales Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyEventReport.asp'><span>Event Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCancelledBooking.asp'><span>Cancelled Booking</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPendingConveyanceApproval.asp'><span>Pending Sales Conveyance Approval</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCreditRequestReport.asp'><span>Credit Request Report</span></a></li></ul></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--
+                        <li class="dropdown-wide">
+                            <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle">
+                                <i class="fa flaticon-settlement hidden-sm"></i><span>Settlement</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                  <div id="Settlement" class="carousel slide">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-3 col-sm-3" style="border-right: 1px solid rgba(255, 255, 255, 0.3);">
+                                            <ol class="carousel-indicators navbar-carousel-indicators" style="">
+
+                                                <li data-target="#Settlement" data-slide-to="0"  class="active"  ><a href="#" class="">Settlement</a></li>
+
+                                            </ol>
+                                        </div>
+                                        <div class="col-lg-10 col-md-9 col-sm-9">
+                                            <div class="carousel-inner">
+                                            <div class='item active'><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportSecurityDepositRefund.asp'><span>Security Deposit Refund</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportPendingRefundRequest.asp'><span>Security Deposit Refund Request</span></a></li></ul></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </li>
+                            </ul>
+                        </li>
+                        -->
+                        <li class="dropdown-wide">
+                            <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle">
+                                <i class="fa flaticon-others hidden-sm"></i><span>Others</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div id="Others" class="carousel slide">
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-3 col-sm-3" style="border-right: 1px solid rgba(255, 255, 255, 0.3);">
+                                                <ol class="carousel-indicators navbar-carousel-indicators" style="">
+
+                                                    <li data-target="#Others" data-slide-to="0" class="active"><a href="#" class="">EDI Mapping</a></li>
+
+                                                    <li data-target="#Others" data-slide-to="1"><a href="#" class="">Other Configuration</a></li>
+
+                                                    <li data-target="#Others" data-slide-to="2"><a href="#" class="">Principal Reports</a></li>
+
+                                                    <li data-target="#Others" data-slide-to="3"><a href="#" class="">Accounts Config</a></li>
+
+                                                    <li data-target="#Others" data-slide-to="4"><a href="#" class="">Claims Process Reports</a></li>
+
+                                                    <li data-target="#Others" data-slide-to="5"><a href="#" class="">DPA EDI</a></li>
+
+                                                    <li data-target="#Others" data-slide-to="6"><a href="#" class="">eDOC</a></li>
+
+                                                    <li data-target="#Others" data-slide-to="7"><a href="#" class="">Documentation</a></li>
+
+                                                </ol>
+                                            </div>
+                                            <div class="col-lg-10 col-md-9 col-sm-9">
+                                                <div class="carousel-inner">
+                                                    <div class='item active'><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyCFSGroupCodeForAdvEdiOPRMaster.asp'><span>Advance List EDI Operator Group Code</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyIGMEDICode.asp'><span>Saudi EDI Code</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyPackageGroupForEDI.asp'><span>Port Wise Package Code</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBLIBEDI.asp'><span>BLIB EDI</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBKIBEDI.asp'><span>BKIB EDI</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyMovesMapping.asp'><span>Moves Mapping</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportDetensionReport.asp'><span>Detention Statement</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImpExpCargoReport.asp'><span>Import Export Cargo Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyChargeWiseCollectionFromAcc.asp'><span>Charge Wise Collection From Accounts</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVesselTaxStatement.asp'><span>Vessel Tax Statement</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyContainerManagementChart.asp'><span>Exp Container Management Fees</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImportContainerManagement.asp'><span>Imp Container Management Fees</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyImpExpChargesWiseSummary.asp'><span>Charge wise Collection Summary</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyStandardDamageRecoveryRpt.asp'><span>Standard Damage Recovery Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyLineExportBrokReport.asp'><span>Principal Brokerage Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyRemittance.asp'><span>Vessel Voyage Return</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyTopNCustomersReport.asp'><span>Top N Customers Lifting Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyAllocationVsActualReport.asp'><span>Allocation Vs Actual Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVesselArrivalReport.asp'><span>Vessel Arrival Report</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyChargesAcCodeFASMaster.asp'><span>Export Charges Account Code Mapping</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyIMPChargesAcCodeFASMaster.asp'><span>Import Charges Account Code Mapping</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyExpCustomerFASACPrincipalWise.asp'><span>Customer Ledger Mapping</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href=''><span>Concor Ledger Mapping</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyRemainderNoticeNew.asp'><span>Reminder Notice New</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDiscripancyDeliveryReport.asp'><span>Discripancy Delivery Report</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyVoyageWiseDiscrepency.asp'><span>Voyage Wise Discrepency</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyManifestToPort.asp'><span>DPA Manifest</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDischargePortList.asp'><span>DPA Discharge List</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDpaLoadList.asp'><span>DPA Load List / Planned List</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='Demodocument.asp'><span>DMS Upload</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='DemoDocumentUploadModify.asp'><span>DMS UPLOAD Modify</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='DemoDocumentUploadDelete.asp'><span>DMS UPLOAD Delete</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='DemoDocumentReport.asp'><span>DOC LOCATOR</span></a></li></ul></div><div class='item '><ul><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyAgentMaster.asp'><span>Agent Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBLAgentMaster.asp'><span>BL Agent Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyClauses.asp'><span>Clauses Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBLClausesGroupMaster.asp'><span>Bl Clauses Group Master</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyConsigneeguidlines1.asp'><span>Consignee Guidlines</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyDemurrageCustCostMaster.asp'><span>Flat rate Detention Updation</span></a></li><li class='col-lg-3 col-md-4 col-sm-6'><a href='AgencyBAPLIEUpload.asp'><span>BAPLIE Excel Upload</span></a></li></ul></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+        <div class="hidden-xs navbar-custom-2"></div>
+        <%- include(page) %>
+    </div>
 </body>
 </html>
