@@ -1,0 +1,18 @@
+{
+  "name": "pentex",
+  "version": "1.0.0",
+  "authors": [
+    "dannibla <dannibla@github.com>"
+  ],
+  "description": "Pentex Dashboard is a Bootstrap Admin Panel for Complex Business Modules - An Open Source Admin Dashboard by Dannibla.",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "path": "^0.12.7",
+    "express": "^4.16.4",
+    "express-partials": "^0.3.0",
+    "cookie-parser": "^1.4.3",
+    "body-parser": "^1.18.3"
+  }
+}
