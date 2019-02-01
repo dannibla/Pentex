@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/:page', function (req, res) {
     var page = req.params.page;
     res.setHeader('Content-Type', 'text/html');
-    res.status(200).render('_layout.ejs', { page: './pages/' + page +'/index.ejs' });
+    res.status(200).render('_layout.ejs', { page: './pages/' + page });
 });
 
 app.get('/', function (req, res) {

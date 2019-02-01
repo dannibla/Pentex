@@ -1,459 +1,678 @@
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('.carousel').carousel({
-            pause: true,
-            interval: false
-        });
-    });
-    $(document).ready(function () {
-        $(".col-md-3 ").mouseenter(function () {
-            $(this).find(".col-img-responsive02").show(200);
-        });
-        $(".col-md-3").mouseleave(function () {
-            $(this).find(".col-img-responsive02").hide();
-        });
-    });
-</script>
-<div class="container">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <div class="row">
-
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="promoBox tile-red">
-                            <div class="icon-box">
-                                <i class="fa flaticon-pendingitems"></i>
-                            </div>
-                            <h4>0</h4>
-                            <h5>Pending Items</h5>
-                            <p> <i class="fa fa-calendar-o"></i> for today</p>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="promoBox tile-green">
-                            <div class="icon-box">
-                                <i class="fa flaticon-revenuetoachieve"></i>
-                            </div>
-                            <h4>0</h4>
-                            <h5>Revenue to achieve</h5>
-                            <p> <i class="fa fa-calendar-o"></i> for this year</p>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="promoBox tile-aqua">
-                            <div class="icon-box">
-                                <i class="fa flaticon-teustoachieve"></i>
-                            </div>
-                            <h4>0</h4>
-                            <h5>Teus to achieve</h5>
-                            <p> <i class="fa fa-calendar-o"></i> for this year</p>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="promoBox tile-blue">
-                            <div class="icon-box">
-                                <i class="fa flaticon-meetingtoupdate"></i>
-                            </div>
-                            <h4>0</h4>
-                            <h5>Meeting to update</h5>
-                            <p> <i class="fa fa-calendar-o"></i> till date</p>
-                        </div>
-                    </div>
-
-                </div>
+  <!-- BEGIN CONTENT BODY -->
+<div class="page-content">
+    <!-- BEGIN PAGE HEADER-->
+    <!-- BEGIN THEME PANEL -->
+    <div class="theme-panel">
+        <div class="toggler tooltips" data-container="body" data-placement="left" data-html="true" data-original-title="Click to open advance theme customizer panel">
+            <i class="icon-settings"></i>
+        </div>
+        <div class="toggler-close">
+            <i class="icon-close"></i>
+        </div>
+        <div class="theme-options">
+            <div class="theme-option theme-colors clearfix">
+                <span> THEME COLOR </span>
+                <ul>
+                    <li class="color-default current tooltips" data-style="default" data-container="body" data-original-title="Default"> </li>
+                    <li class="color-grey tooltips" data-style="grey" data-container="body" data-original-title="Grey"> </li>
+                    <li class="color-blue tooltips" data-style="blue" data-container="body" data-original-title="Blue"> </li>
+                    <li class="color-dark tooltips" data-style="dark" data-container="body" data-original-title="Dark"> </li>
+                    <li class="color-light tooltips" data-style="light" data-container="body" data-original-title="Light"> </li>
+                </ul>
             </div>
-            <div class="item">
-                <div class="row">
-
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="promoBox tile-cyan">
-                            <div class="icon-box">
-                                <i class="fa flaticon-customeroutstanding"></i>
-                            </div>
-                            <h4>0</h4>
-                            <h5>Customer outstanding</h5>
-                            <p> <i class="fa fa-calendar-o"></i> as on date</p>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="promoBox tile-orange">
-                            <div class="icon-box">
-                                <i class="fa flaticon-idlingcount"></i>
-                            </div>
-                            <h4>0</h4>
-                            <h5>Idling Count</h5>
-                            <p> <i class="fa fa-calendar-o"></i> as on date</p>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="promoBox tile-aqua">
-                            <div class="icon-box">
-                                <i class="fa flaticon-detentioncollected"></i>
-                            </div>
-                            <h4>0</h4>
-                            <h5>Detention Collected</h5>
-                            <p> <i class="fa fa-calendar-o"></i> till date</p>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="promoBox tile-plum">
-                            <div class="icon-box">
-                                <i class="fa flaticon-underdamage"></i>
-                            </div>
-                            <h4>0</h4>
-                            <h5>Under damage</h5>
-                            <p> <i class="fa fa-calendar-o"></i> till date</p>
-                        </div>
-                    </div>
-
-                </div>
+            <div class="theme-option">
+                <span> Theme Style </span>
+                <select class="layout-style-option form-control input-small">
+                    <option value="square" selected="selected">Square corners</option>
+                    <option value="rounded">Rounded corners</option>
+                </select>
+            </div>
+            <div class="theme-option">
+                <span> Layout </span>
+                <select class="layout-option form-control input-small">
+                    <option value="fluid" selected="selected">Fluid</option>
+                    <option value="boxed">Boxed</option>
+                </select>
+            </div>
+            <div class="theme-option">
+                <span> Header </span>
+                <select class="page-header-option form-control input-small">
+                    <option value="fixed" selected="selected">Fixed</option>
+                    <option value="default">Default</option>
+                </select>
+            </div>
+            <div class="theme-option">
+                <span> Top Dropdown</span>
+                <select class="page-header-top-dropdown-style-option form-control input-small">
+                    <option value="light" selected="selected">Light</option>
+                    <option value="dark">Dark</option>
+                </select>
+            </div>
+            <div class="theme-option">
+                <span> Sidebar Mode</span>
+                <select class="sidebar-option form-control input-small">
+                    <option value="fixed">Fixed</option>
+                    <option value="default" selected="selected">Default</option>
+                </select>
+            </div>
+            <div class="theme-option">
+                <span> Sidebar Style</span>
+                <select class="sidebar-style-option form-control input-small">
+                    <option value="default" selected="selected">Default</option>
+                    <option value="compact">Compact</option>
+                </select>
+            </div>
+            <div class="theme-option">
+                <span> Sidebar Menu </span>
+                <select class="sidebar-menu-option form-control input-small">
+                    <option value="accordion" selected="selected">Accordion</option>
+                    <option value="hover">Hover</option>
+                </select>
+            </div>
+            <div class="theme-option">
+                <span> Sidebar Position </span>
+                <select class="sidebar-pos-option form-control input-small">
+                    <option value="left" selected="selected">Left</option>
+                    <option value="right">Right</option>
+                </select>
+            </div>
+            <div class="theme-option">
+                <span> Footer </span>
+                <select class="page-footer-option form-control input-small">
+                    <option value="fixed">Fixed</option>
+                    <option value="default" selected="selected">Default</option>
+                </select>
             </div>
         </div>
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-            <span aria-hidden="true"><i class="fa flaticon-previous-arrow"></i></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-            <span aria-hidden="true"><i class="fa flaticon-next-arrow"></i></span>
-            <span class="sr-only">Next</span>
-        </a>
+    </div>
+    <!-- END THEME PANEL -->
+    <h3 class="page-title">
+        Form Validation
+        <small>form validation</small>
+    </h3>
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="icon-home"></i>
+                <a href="index.html">Home</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <span>Form Stuff</span>
+            </li>
+        </ul>
+        <div class="page-toolbar">
+            <div class="btn-group pull-right">
+                <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
+                    Actions
+                    <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="dropdown-menu pull-right" role="menu">
+                    <li>
+                        <a href="#">
+                            <i class="icon-bell"></i> Action
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon-shield"></i> Another action
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon-user"></i> Something else here
+                        </a>
+                    </li>
+                    <li class="divider"> </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon-bag"></i> Separated link
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- END PAGE HEADER-->
+    <div class="m-heading-1 border-green m-bordered">
+        <h3>jQuery Validation Plugin</h3>
+        <p>
+            This jQuery plugin makes simple clientside form validation easy, whilst still offering plenty of customization options. For more info please check out
+            <a class="btn red btn-outline" href="http://jqueryvalidation.org" target="_blank">the official documentation</a>
+        </p>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN VALIDATION STATES-->
+            <div class="portlet light portlet-fit portlet-form " id="form_wizard_1">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class=" icon-layers font-green"></i>
+                        <span class="caption-subject font-green sbold uppercase">Validation States</span>
+                    </div>
+                    <div class="actions">
+                        <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                            <i class="icon-cloud-upload"></i>
+                        </a>
+                        <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                            <i class="icon-wrench"></i>
+                        </a>
+                        <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                            <i class="icon-trash"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <!-- BEGIN FORM-->
+                    <form action="#" class="form-horizontal">
+                        <div class="form-body">
+                            <h3 class="form-section">Basic validation States</h3>
+                            <div class="form-group has-warning">
+                                <label class="control-label col-md-3" for="inputWarning">Input with warning</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="inputWarning" />
+                                    <span class="help-block"> Something may have gone wrong </span>
+                                </div>
+                            </div>
+                            <div class="form-group has-error">
+                                <label class="control-label col-md-3" for="inputError">Input with error</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="inputError" />
+                                    <span class="help-block"> Please correct the error </span>
+                                </div>
+                            </div>
+                            <div class="form-group has-success">
+                                <label class="control-label col-md-3" for="inputSuccess">Input with success</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="inputSuccess" />
+                                </div>
+                            </div>
+                            <h3 class="form-section">Validation States With Icons</h3>
+                            <div class="form-group has-warning">
+                                <label class="control-label col-md-3">Input with warning</label>
+                                <div class="col-md-4">
+                                    <div class="input-icon right">
+                                        <i class="fa fa-exclamation tooltips" data-original-title="please write a valid email"></i>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group has-error">
+                                <label class="control-label col-md-3">Input with error</label>
+                                <div class="col-md-4">
+                                    <div class="input-icon right">
+                                        <i class="fa fa-warning tooltips" data-original-title="please write a valid email"></i>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group has-success">
+                                <label class="control-label col-md-3">Input with success</label>
+                                <div class="col-md-4">
+                                    <div class="input-icon right">
+                                        <i class="fa fa-check tooltips" data-original-title="success input!"></i>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button type="submit" class="btn green">Submit</button>
+                                    <button type="button" class="btn default">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- END FORM-->
+                </div>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN VALIDATION STATES-->
+            <div class="portlet light portlet-fit portlet-form ">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-settings font-red"></i>
+                        <span class="caption-subject font-red sbold uppercase">Basic Validation</span>
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group btn-group-devided" data-toggle="buttons">
+                            <label class="btn btn-transparent red btn-outline btn-circle btn-sm active">
+                                <input type="radio" name="options" class="toggle" id="option1">Actions
+                            </label>
+                            <label class="btn btn-transparent red btn-outline btn-circle btn-sm">
+                                <input type="radio" name="options" class="toggle" id="option2">Settings
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <!-- BEGIN FORM-->
+                    <form action="#" id="form_sample_1" class="form-horizontal">
+                        <div class="form-body">
+                            <div class="alert alert-danger display-hide">
+                                <button class="close" data-close="alert"></button> You have some form errors. Please check below.
+                            </div>
+                            <div class="alert alert-success display-hide">
+                                <button class="close" data-close="alert"></button> Your form validation is successful!
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Name
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" name="name" data-required="1" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Email
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <input name="email" type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    URL
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <input name="url" type="text" class="form-control" />
+                                    <span class="help-block"> e.g: http://www.demo.com or http://demo.com </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Number
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <input name="number" type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Digits
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <input name="digits" type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Credit Card
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <input name="creditcard" type="text" class="form-control" />
+                                    <span class="help-block"> e.g: 5500 0000 0000 0004 </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Occupation&nbsp;&nbsp;</label>
+                                <div class="col-md-4">
+                                    <input name="occupation" type="text" class="form-control" />
+                                    <span class="help-block"> optional field </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Select
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <select class="form-control" name="select">
+                                        <option value="">Select...</option>
+                                        <option value="Category 1">Category 1</option>
+                                        <option value="Category 2">Category 2</option>
+                                        <option value="Category 3">Category 5</option>
+                                        <option value="Category 4">Category 4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Multi Select
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <select class="form-control" name="select_multi" multiple>
+                                        <option value="Category 1">Category 1</option>
+                                        <option value="Category 2">Category 2</option>
+                                        <option value="Category 3">Category 3</option>
+                                        <option value="Category 4">Category 4</option>
+                                        <option value="Category 5">Category 5</option>
+                                    </select>
+                                    <span class="help-block"> select max 3 options, min 1 option </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button type="submit" class="btn green">Submit</button>
+                                    <button type="button" class="btn grey-salsa btn-outline">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- END FORM-->
+                </div>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN VALIDATION STATES-->
+            <div class="portlet light portlet-fit portlet-form ">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-bubble font-green"></i>
+                        <span class="caption-subject font-green bold uppercase">Validation Using Icons</span>
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group">
+                            <a class="btn green btn-outline btn-circle btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                Actions
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li>
+                                    <a href="javascript:;"> Option 1</a>
+                                </li>
+                                <li class="divider"> </li>
+                                <li>
+                                    <a href="javascript:;">Option 2</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">Option 3</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">Option 4</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <!-- BEGIN FORM-->
+                    <form action="#" id="form_sample_2" class="form-horizontal">
+                        <div class="form-body">
+                            <div class="alert alert-danger display-hide">
+                                <button class="close" data-close="alert"></button> You have some form errors. Please check below.
+                            </div>
+                            <div class="alert alert-success display-hide">
+                                <button class="close" data-close="alert"></button> Your form validation is successful!
+                            </div>
+                            <div class="form-group  margin-top-20">
+                                <label class="control-label col-md-3">
+                                    Name
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <div class="input-icon right">
+                                        <i class="fa"></i>
+                                        <input type="text" class="form-control" name="name" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Email
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <div class="input-icon right">
+                                        <i class="fa"></i>
+                                        <input type="text" class="form-control" name="email" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    URL
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <div class="input-icon right">
+                                        <i class="fa"></i>
+                                        <input type="text" class="form-control" name="url" />
+                                    </div>
+                                    <span class="help-block"> e.g: http://www.demo.com or http://demo.com </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Number
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <div class="input-icon right">
+                                        <i class="fa"></i>
+                                        <input type="text" class="form-control" name="number" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Digits
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <div class="input-icon right">
+                                        <i class="fa"></i>
+                                        <input type="text" class="form-control" name="digits" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Credit Card
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <div class="input-icon right">
+                                        <i class="fa"></i>
+                                        <input type="text" class="form-control" name="creditcard" />
+                                    </div>
+                                    <span class="help-block"> e.g: 5500 0000 0000 0004 </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button type="submit" class="btn green">Submit</button>
+                                    <button type="button" class="btn default">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- END FORM-->
+                </div>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN VALIDATION STATES-->
+            <div class="portlet light portlet-fit portlet-form ">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-settings font-dark"></i>
+                        <span class="caption-subject font-dark sbold uppercase">Advance Validation</span>
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group btn-group-devided" data-toggle="buttons">
+                            <label class="btn btn-transparent dark btn-outline btn-circle btn-sm active">
+                                <input type="radio" name="options" class="toggle" id="option1">Actions
+                            </label>
+                            <label class="btn btn-transparent dark btn-outline btn-circle btn-sm">
+                                <input type="radio" name="options" class="toggle" id="option2">Settings
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <!-- BEGIN FORM-->
+                    <form action="#" id="form_sample_3" class="form-horizontal">
+                        <div class="form-body">
+                            <div class="alert alert-danger display-hide">
+                                <button class="close" data-close="alert"></button> You have some form errors. Please check below.
+                            </div>
+                            <div class="alert alert-success display-hide">
+                                <button class="close" data-close="alert"></button> Your form validation is successful!
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Name
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <input type="text" name="name" data-required="1" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">
+                                    Email Address
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-envelope"></i>
+                                        </span>
+                                        <input type="email" name="email" class="form-control" placeholder="Email Address">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Occupation&nbsp;&nbsp;</label>
+                                <div class="col-md-4">
+                                    <input name="occupation" type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Select2 Dropdown
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <select class="form-control select2me" name="options2">
+                                        <option value="">Select...</option>
+                                        <option value="Option 1">Option 1</option>
+                                        <option value="Option 2">Option 2</option>
+                                        <option value="Option 3">Option 3</option>
+                                        <option value="Option 4">Option 4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Datepicker</label>
+                                <div class="col-md-4">
+                                    <div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+                                        <input type="text" class="form-control" readonly name="datepicker">
+                                        <span class="input-group-btn">
+                                            <button class="btn default" type="button">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                    <!-- /input-group -->
+                                    <span class="help-block"> select a date </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Membership
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <div class="radio-list" data-error-container="#form_2_membership_error">
+                                        <label>
+                                            <input type="radio" name="membership" value="1" /> Fee
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="membership" value="2" /> Professional
+                                        </label>
+                                    </div>
+                                    <div id="form_2_membership_error"> </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Services
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-4">
+                                    <div class="checkbox-list" data-error-container="#form_2_services_error">
+                                        <label>
+                                            <input type="checkbox" value="1" name="service" /> Service 1
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" value="2" name="service" /> Service 2
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" value="3" name="service" /> Service 3
+                                        </label>
+                                    </div>
+                                    <span class="help-block"> (select at least two) </span>
+                                    <div id="form_2_services_error"> </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Markdown</label>
+                                <div class="col-md-9">
+                                    <textarea name="markdown" data-provide="markdown" rows="10" data-error-container="#editor_error"></textarea>
+                                    <div id="editor_error"> </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    WYSIHTML5 Editor
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-9">
+                                    <textarea class="wysihtml5 form-control" rows="6" name="editor1" data-error-container="#editor1_error"></textarea>
+                                    <div id="editor1_error"> </div>
+                                </div>
+                            </div>
+                            <div class="form-group last">
+                                <label class="control-label col-md-3">
+                                    CKEditor
+                                    <span class="required"> * </span>
+                                </label>
+                                <div class="col-md-9">
+                                    <textarea class="ckeditor form-control" name="editor2" rows="6" data-error-container="#editor2_error"></textarea>
+                                    <div id="editor2_error"> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button type="submit" class="btn green">Submit</button>
+                                    <button type="button" class="btn default">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- END FORM-->
+                </div>
+                <!-- END VALIDATION STATES-->
+            </div>
+        </div>
     </div>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-custom-left">
-            <!-- BEGIN Portlet PORTLET-->
-            <div class="portlet portlet-bordered">
-                <div class="portlet-title">
-                    <div class="caption caption-red">
-                        <i class="fa flaticon-curriculum"></i>
-                        <span class="caption-subject text-uppercase"> Pending Tasks</span>
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <table class="table table-responsive">
-                        <thead>
-                            <tr>
-                                <th>S.No</th>
-                                <th>Tasks List</th>
-                                <th>Pending Task Counts</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td style="text-align:left;">Customer Awaiting Booking.</td>
-                                <td><a color='blue' href='PendingTaskList.asp?ShowTableFlag=S&FunctionToCall=CustomerAwaitingBooking' target='_blank'>1</a></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td style="text-align:left;">Customer Awaiting BL.</td>
-                                <td><a color='blue' href='PendingTaskList.asp?ShowTableFlag=S&FunctionToCall=CustomerAwatingBL' target='_blank'>0</a></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td style="text-align:left;">Pending  Invoices to send.</td>
-                                <td><a color='blue' href='PendingTaskList.asp?ShowTableFlag=S&FunctionToCall=PendingInvoiceToSend' target='_blank'>0</a></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td style="text-align:left;">Surcharges to be Expired</td>
-                                <td><a color='blue' href='PendingTaskList.asp?ShowTableFlag=S&FunctionToCall=SurchargesToBeExpired' target='_blank'>0</a></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td style="text-align:left;">Online BLs Pending for Invoicing</td>
-                                <td><a color='blue' href='PendingTaskList.asp?ShowTableFlag=S&FunctionToCall=OnlineBLPendingforInvoicing' target='_blank'>0</a></td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td style="text-align:left;">Pending Payment Done Online BLs for Receipt</td>
-                                <td><a color='blue' href='PendingTaskList.asp?ShowTableFlag=S&FunctionToCall=PendingPaymentDoneOnlineBLsForReceipt' target='_blank'>0</a></td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td style="text-align:left;">Pending Extension Inv Request</td>
-                                <td><a color='blue' href='PendingTaskList.asp?ShowTableFlag=S&FunctionToCall=PendingExtensionInvRequest' target='_blank'>0</a></td>
-                            </tr>
-                            <tr><td colspan='3'></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <!-- END Portlet PORTLET-->
-        </div>
-
-        <div class="col-md-6 col-custom-right">
-            <!-- BEGIN Portlet PORTLET-->
-            <div class="portlet portlet-bordered">
-                <div class="portlet-title">
-                    <div class="caption caption-red">
-                        <i class="fa flaticon-quality"></i>
-                        <span class="caption-subject text-uppercase"> Detention Confirmation</span>
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <table class="table table-responsive">
-                        <thead>
-                            <tr>
-                                <th>S.No</th>
-                                <th>Detention List</th>
-                                <th>Detention Counts</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td style="text-align:left;"> No. of Containers returned (GIMT) as per CY.</td>
-                                <td><a color='blue' href='DetentionConfirmationList.asp?ShowTableFlag=S&FunToCall=ContainersReturnedCY' target='_blank'>0</a></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td style="text-align:left;">No. of Container Dispatched (GOFU).</td>
-                                <td><a color='blue' href='DetentionConfirmationList.asp?ShowTableFlag=S&FunToCall=ContainerDispatched' target='_blank'>0</a></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td style="text-align:left;">NCD customer top 10 outstanding with ageing.</td>
-                                <td><a color='blue' href='DetentionConfirmationList.asp?ShowTableFlag=S&FunToCall=NCDoutstandingCustome' target='_blank'>0</a></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td style="text-align:left;"> Above deposit customer top 10 outstanding with ageing. </td>
-                                <td><a color='blue' href='DetentionConfirmationList.asp?ShowTableFlag=S&FunToCall=AboveDepositCustomer' target='_blank'>0</a></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td style="text-align:left;"> Daily detention paid </td>
-                                <td><a color='blue' href='DailyDetentionPaidList.asp?ShowTableFlag=S&FunctionToCall=DailyDetentionPaid' target='_blank'>0</a></td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td style="text-align:left;"> List of detention invoices generated after GIMT. </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td style="text-align:left;">  Total no. of customers suspended as defaulters (line wise) </td>
-                                <td><a color='blue' href='DetentionConfirmationList.asp?ShowTableFlag=S&FunToCall=CustomersSuspendedAsDefaulters' target='_blank'>0</a></td>
-                            </tr>
-                            <tr><td colspan='3'></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <!-- END Portlet PORTLET-->
-        </div>
-    </div>
-    <div class="row">
-
-        <div class="col-md-6 col-custom-left">
-            <!-- BEGIN Portlet PORTLET-->
-            <div class="portlet portlet-bordered">
-                <div class="portlet-title">
-                    <div class="caption caption-red">
-                        <i class="fa flaticon-imports"></i>
-                        <span class="caption-subject text-uppercase">Import</span>
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <table class="table table-responsive">
-                        <thead>
-                            <tr>
-                                <th>S.No</th>
-                                <th>List</th>
-                                <th>Counts</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td colspan="3"><b>Import Documentation - Dashboard Alerts</b></td></tr>
-                            <tr>
-                                <td>1</td>
-                                <td style="text-align:left;"> Pending Translation </td>
-                                <td><a color='blue' href='ImportDetailList.asp?ShowTableFlag=S&FunctionToCall=PendingTranslation' target='_blank'>703</a></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td style="text-align:left;">   Pending Saudi EDI upload </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td style="text-align:left;"> Pending Rotation number update</td>
-                                <td><a color='blue' href='ImportDetailList.asp?ShowTableFlag=S&FunctionToCall=PendingRotationNumberUpdate' target='_blank'>0</a></td>
-                            </tr>
-                            <tr><td colspan="3"><b>Import Customer Service - Dashboard Alerts</b></td></tr>
-                            <tr>
-                                <td>1</td>
-                                <td style="text-align:left;"> Pending Dos with ageing</td>
-                                <td><a color='blue' href='ImportDetailList.asp?ShowTableFlag=S&FunctionToCall=PendingDosWithAgeging' target='_blank'>866</a></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td style="text-align:left;">Pending Invoices</td>
-                                <td><a color='blue' href='ImportDetailList.asp?ShowTableFlag=S&FunctionToCall=PendingInvoices' target='_blank'>3</a></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td style="text-align:left;"> Dos issued vs container not picked</td>
-                                <td><a color='blue' href='ImportDetailList.asp?ShowTableFlag=S&FunctionToCall=IssuedVsContainer' target='_blank'>15</a></td>
-                            </tr>
-                            <tr><td colspan="3"></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <!-- END Portlet PORTLET-->
-        </div>
-
-        <div class="col-md-6 col-custom-right">
-            <!-- BEGIN Portlet PORTLET-->
-            <div class="portlet portlet-bordered">
-                <div class="portlet-title">
-                    <div class="caption caption-red">
-                        <i class="fa flaticon-exports"></i>
-                        <span class="caption-subject text-uppercase"> Export</span>
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <table class="table table-responsive">
-                        <thead>
-                            <tr>
-                                <th>S.No</th>
-                                <th>List</th>
-                                <th>Counts</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td colspan="3"><b>Export Documentation - Dashboard Alerts</b></td></tr>
-                            <tr>
-                                <td>1</td>
-                                <td style="text-align:left;">  Pending bookings for Manifest </td>
-                                <td><a color='blue' href='ExportDetailList.asp?ShowTableFlag=S&FunctionToCall=PendingBookingsManifest' target='_blank'>0</a></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td style="text-align:left;"> Pending SaudiEDI manifest upload</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td style="text-align:left;">Pending Bls for (NYK RORO/NYK Bulk/Rickmers/BLPL)</td>
-                                <td></td>
-                            </tr>
-                            <tr><td colspan="3"><b>Export Customer Service - Dashboard Alerts</b></td></tr>
-                            <tr>
-                                <td>1</td>
-                                <td style="text-align:left;">Pending Invoice</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td style="text-align:left;">  Customer Outstanding</td>
-                                <td></td>
-                            </tr>
-                            <tr><td colspan="3"></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- END Portlet PORTLET-->
-        </div>
-    </div>
-    <div class="row">
-
-        <div class="col-md-6 col-custom-left">
-            <!-- BEGIN Portlet PORTLET-->
-            <div class="portlet portlet-bordered">
-                <div class="portlet-title">
-                    <div class="caption caption-red">
-                        <i class="fa flaticon-target"></i>
-                        <span class="caption-subject text-uppercase"> Sales / Pricing / Pricing Reports / Customer Service</span>
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <table class="table table-responsive">
-                        <thead>
-                            <tr>
-                                <th>S.No</th>
-                                <th>List</th>
-                                <th align="center">Counts</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <tr>
-                                <td>1</td>
-                                <td style="text-align:left;"> Pending bookings for Release Order </td>
-                                <td><a color='blue' href='CustomerServiceList.asp?ShowTableFlag=S&FunctionToCall=PendingReleaseOrder' target='_blank'>2</a></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td style="text-align:left;">Release Order expiring in number of days</td>
-                                <td><a color='blue' href='CustomerServiceList.asp?ShowTableFlag=S&FunctionToCall=ReleaseOrderExpiring' target='_blank'>0</a></td>
-                            </tr>
-
-                            <tr>
-                                <td>3</td>
-                                <td style="text-align:left;">Release Order issued containers not picked up</td>
-                                <td></td>
-                            </tr>
-
-                            <tr>
-                                <td>4</td>
-                                <td style="text-align:left;">Long Standing Containers with Shippers</td>
-                                <td><a color='blue' href='CustomerServiceList.asp?ShowTableFlag=S&FunctionToCall=LongStandingContainers' target='_blank'>12</a></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td style="text-align:left;">Rates expiring in next 7 days</td>
-                                <td><a color='blue' href='CustomerServiceList.asp?ShowTableFlag=S&FunctionToCall=RatesExpiring' target='_blank'>2</a></td>
-                            </tr>
-
-                            <tr>
-                                <td>6</td>
-                                <td style="text-align:left;">SI pending to follow up with customers</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td style="text-align:left;">Budget vs Actual loading in TEUs</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td style="text-align:left;">Sales person wise performance (TEUs)</td>
-                                <td><a href='SalesPersonLoadingList.asp?ShowTableFlag=S&FunctionToCall=SalesPersonLoading' target='_blank'>10</a></td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td style="text-align:left;">Customers outstanding</td>
-                                <td><a color='blue' href='CustomerServiceList.asp?ShowTableFlag=S&FunctionToCall=CustOS' target='_blank'>5</a></td>
-                            </tr>
-
-                            <tr><td colspan="3"></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <!-- END Portlet PORTLET-->
-        </div>
-
-    </div>
-</div>
+<!-- END CONTENT BODY -->
