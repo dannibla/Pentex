@@ -6,7 +6,7 @@
   ],
   "description": "Pentex Dashboard is a Bootstrap Admin Panel for Complex Business Modules - An Open Source Admin Dashboard by Maskend.",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "dependencies": {
     "jquery": "2.2.4",
     "bootstrap": "3.4.0",
