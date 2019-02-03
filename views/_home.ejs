@@ -1,678 +1,608 @@
-  <!-- BEGIN CONTENT BODY -->
-<div class="page-content">
-    <!-- BEGIN PAGE HEADER-->
-    <!-- BEGIN THEME PANEL -->
-    <div class="theme-panel">
-        <div class="toggler tooltips" data-container="body" data-placement="left" data-html="true" data-original-title="Click to open advance theme customizer panel">
-            <i class="icon-settings"></i>
-        </div>
-        <div class="toggler-close">
-            <i class="icon-close"></i>
-        </div>
-        <div class="theme-options">
-            <div class="theme-option theme-colors clearfix">
-                <span> THEME COLOR </span>
-                <ul>
-                    <li class="color-default current tooltips" data-style="default" data-container="body" data-original-title="Default"> </li>
-                    <li class="color-grey tooltips" data-style="grey" data-container="body" data-original-title="Grey"> </li>
-                    <li class="color-blue tooltips" data-style="blue" data-container="body" data-original-title="Blue"> </li>
-                    <li class="color-dark tooltips" data-style="dark" data-container="body" data-original-title="Dark"> </li>
-                    <li class="color-light tooltips" data-style="light" data-container="body" data-original-title="Light"> </li>
-                </ul>
-            </div>
-            <div class="theme-option">
-                <span> Theme Style </span>
-                <select class="layout-style-option form-control input-small">
-                    <option value="square" selected="selected">Square corners</option>
-                    <option value="rounded">Rounded corners</option>
-                </select>
-            </div>
-            <div class="theme-option">
-                <span> Layout </span>
-                <select class="layout-option form-control input-small">
-                    <option value="fluid" selected="selected">Fluid</option>
-                    <option value="boxed">Boxed</option>
-                </select>
-            </div>
-            <div class="theme-option">
-                <span> Header </span>
-                <select class="page-header-option form-control input-small">
-                    <option value="fixed" selected="selected">Fixed</option>
-                    <option value="default">Default</option>
-                </select>
-            </div>
-            <div class="theme-option">
-                <span> Top Dropdown</span>
-                <select class="page-header-top-dropdown-style-option form-control input-small">
-                    <option value="light" selected="selected">Light</option>
-                    <option value="dark">Dark</option>
-                </select>
-            </div>
-            <div class="theme-option">
-                <span> Sidebar Mode</span>
-                <select class="sidebar-option form-control input-small">
-                    <option value="fixed">Fixed</option>
-                    <option value="default" selected="selected">Default</option>
-                </select>
-            </div>
-            <div class="theme-option">
-                <span> Sidebar Style</span>
-                <select class="sidebar-style-option form-control input-small">
-                    <option value="default" selected="selected">Default</option>
-                    <option value="compact">Compact</option>
-                </select>
-            </div>
-            <div class="theme-option">
-                <span> Sidebar Menu </span>
-                <select class="sidebar-menu-option form-control input-small">
-                    <option value="accordion" selected="selected">Accordion</option>
-                    <option value="hover">Hover</option>
-                </select>
-            </div>
-            <div class="theme-option">
-                <span> Sidebar Position </span>
-                <select class="sidebar-pos-option form-control input-small">
-                    <option value="left" selected="selected">Left</option>
-                    <option value="right">Right</option>
-                </select>
-            </div>
-            <div class="theme-option">
-                <span> Footer </span>
-                <select class="page-footer-option form-control input-small">
-                    <option value="fixed">Fixed</option>
-                    <option value="default" selected="selected">Default</option>
-                </select>
-            </div>
-        </div>
-    </div>
-    <!-- END THEME PANEL -->
-    <h3 class="page-title">
-        Form Validation
-        <small>form validation</small>
-    </h3>
-    <div class="page-bar">
-        <ul class="page-breadcrumb">
-            <li>
-                <i class="icon-home"></i>
-                <a href="index.html">Home</a>
-                <i class="fa fa-angle-right"></i>
-            </li>
-            <li>
-                <span>Form Stuff</span>
-            </li>
-        </ul>
-        <div class="page-toolbar">
-            <div class="btn-group pull-right">
-                <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
-                    Actions
-                    <i class="fa fa-angle-down"></i>
-                </button>
-                <ul class="dropdown-menu pull-right" role="menu">
-                    <li>
-                        <a href="#">
-                            <i class="icon-bell"></i> Action
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="icon-shield"></i> Another action
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="icon-user"></i> Something else here
-                        </a>
-                    </li>
-                    <li class="divider"> </li>
-                    <li>
-                        <a href="#">
-                            <i class="icon-bag"></i> Separated link
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- END PAGE HEADER-->
-    <div class="m-heading-1 border-green m-bordered">
-        <h3>jQuery Validation Plugin</h3>
-        <p>
-            This jQuery plugin makes simple clientside form validation easy, whilst still offering plenty of customization options. For more info please check out
-            <a class="btn red btn-outline" href="http://jqueryvalidation.org" target="_blank">the official documentation</a>
-        </p>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <!-- BEGIN VALIDATION STATES-->
-            <div class="portlet light portlet-fit portlet-form " id="form_wizard_1">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class=" icon-layers font-green"></i>
-                        <span class="caption-subject font-green sbold uppercase">Validation States</span>
-                    </div>
-                    <div class="actions">
-                        <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                            <i class="icon-cloud-upload"></i>
-                        </a>
-                        <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                            <i class="icon-wrench"></i>
-                        </a>
-                        <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                            <i class="icon-trash"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <!-- BEGIN FORM-->
-                    <form action="#" class="form-horizontal">
-                        <div class="form-body">
-                            <h3 class="form-section">Basic validation States</h3>
-                            <div class="form-group has-warning">
-                                <label class="control-label col-md-3" for="inputWarning">Input with warning</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" id="inputWarning" />
-                                    <span class="help-block"> Something may have gone wrong </span>
-                                </div>
-                            </div>
-                            <div class="form-group has-error">
-                                <label class="control-label col-md-3" for="inputError">Input with error</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" id="inputError" />
-                                    <span class="help-block"> Please correct the error </span>
-                                </div>
-                            </div>
-                            <div class="form-group has-success">
-                                <label class="control-label col-md-3" for="inputSuccess">Input with success</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" id="inputSuccess" />
-                                </div>
-                            </div>
-                            <h3 class="form-section">Validation States With Icons</h3>
-                            <div class="form-group has-warning">
-                                <label class="control-label col-md-3">Input with warning</label>
-                                <div class="col-md-4">
-                                    <div class="input-icon right">
-                                        <i class="fa fa-exclamation tooltips" data-original-title="please write a valid email"></i>
-                                        <input type="text" class="form-control" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group has-error">
-                                <label class="control-label col-md-3">Input with error</label>
-                                <div class="col-md-4">
-                                    <div class="input-icon right">
-                                        <i class="fa fa-warning tooltips" data-original-title="please write a valid email"></i>
-                                        <input type="text" class="form-control" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group has-success">
-                                <label class="control-label col-md-3">Input with success</label>
-                                <div class="col-md-4">
-                                    <div class="input-icon right">
-                                        <i class="fa fa-check tooltips" data-original-title="success input!"></i>
-                                        <input type="text" class="form-control" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-actions">
-                            <div class="row">
-                                <div class="col-md-offset-3 col-md-9">
-                                    <button type="submit" class="btn green">Submit</button>
-                                    <button type="button" class="btn default">Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- END FORM-->
-                </div>
-            </div>
-            <!-- END VALIDATION STATES-->
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <!-- BEGIN VALIDATION STATES-->
-            <div class="portlet light portlet-fit portlet-form ">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="icon-settings font-red"></i>
-                        <span class="caption-subject font-red sbold uppercase">Basic Validation</span>
-                    </div>
-                    <div class="actions">
-                        <div class="btn-group btn-group-devided" data-toggle="buttons">
-                            <label class="btn btn-transparent red btn-outline btn-circle btn-sm active">
-                                <input type="radio" name="options" class="toggle" id="option1">Actions
-                            </label>
-                            <label class="btn btn-transparent red btn-outline btn-circle btn-sm">
-                                <input type="radio" name="options" class="toggle" id="option2">Settings
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <!-- BEGIN FORM-->
-                    <form action="#" id="form_sample_1" class="form-horizontal">
-                        <div class="form-body">
-                            <div class="alert alert-danger display-hide">
-                                <button class="close" data-close="alert"></button> You have some form errors. Please check below.
-                            </div>
-                            <div class="alert alert-success display-hide">
-                                <button class="close" data-close="alert"></button> Your form validation is successful!
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">
-                                    Name
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-4">
-                                    <input type="text" name="name" data-required="1" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">
-                                    Email
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-4">
-                                    <input name="email" type="text" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">
-                                    URL
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-4">
-                                    <input name="url" type="text" class="form-control" />
-                                    <span class="help-block"> e.g: http://www.demo.com or http://demo.com </span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">
-                                    Number
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-4">
-                                    <input name="number" type="text" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">
-                                    Digits
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-4">
-                                    <input name="digits" type="text" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">
-                                    Credit Card
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-4">
-                                    <input name="creditcard" type="text" class="form-control" />
-                                    <span class="help-block"> e.g: 5500 0000 0000 0004 </span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">Occupation&nbsp;&nbsp;</label>
-                                <div class="col-md-4">
-                                    <input name="occupation" type="text" class="form-control" />
-                                    <span class="help-block"> optional field </span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">
-                                    Select
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="select">
-                                        <option value="">Select...</option>
-                                        <option value="Category 1">Category 1</option>
-                                        <option value="Category 2">Category 2</option>
-                                        <option value="Category 3">Category 5</option>
-                                        <option value="Category 4">Category 4</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">
-                                    Multi Select
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="select_multi" multiple>
-                                        <option value="Category 1">Category 1</option>
-                                        <option value="Category 2">Category 2</option>
-                                        <option value="Category 3">Category 3</option>
-                                        <option value="Category 4">Category 4</option>
-                                        <option value="Category 5">Category 5</option>
-                                    </select>
-                                    <span class="help-block"> select max 3 options, min 1 option </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-actions">
-                            <div class="row">
-                                <div class="col-md-offset-3 col-md-9">
-                                    <button type="submit" class="btn green">Submit</button>
-                                    <button type="button" class="btn grey-salsa btn-outline">Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- END FORM-->
-                </div>
-            </div>
-            <!-- END VALIDATION STATES-->
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <!-- BEGIN VALIDATION STATES-->
-            <div class="portlet light portlet-fit portlet-form ">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="icon-bubble font-green"></i>
-                        <span class="caption-subject font-green bold uppercase">Validation Using Icons</span>
-                    </div>
-                    <div class="actions">
-                        <div class="btn-group">
-                            <a class="btn green btn-outline btn-circle btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                Actions
-                                <i class="fa fa-angle-down"></i>
-                            </a>
-                            <ul class="dropdown-menu pull-right">
-                                <li>
-                                    <a href="javascript:;"> Option 1</a>
-                                </li>
-                                <li class="divider"> </li>
-                                <li>
-                                    <a href="javascript:;">Option 2</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">Option 3</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">Option 4</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <!-- BEGIN FORM-->
-                    <form action="#" id="form_sample_2" class="form-horizontal">
-                        <div class="form-body">
-                            <div class="alert alert-danger display-hide">
-                                <button class="close" data-close="alert"></button> You have some form errors. Please check below.
-                            </div>
-                            <div class="alert alert-success display-hide">
-                                <button class="close" data-close="alert"></button> Your form validation is successful!
-                            </div>
-                            <div class="form-group  margin-top-20">
-                                <label class="control-label col-md-3">
-                                    Name
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-4">
-                                    <div class="input-icon right">
-                                        <i class="fa"></i>
-                                        <input type="text" class="form-control" name="name" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">
-                                    Email
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-4">
-                                    <div class="input-icon right">
-                                        <i class="fa"></i>
-                                        <input type="text" class="form-control" name="email" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">
-                                    URL
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-4">
-                                    <div class="input-icon right">
-                                        <i class="fa"></i>
-                                        <input type="text" class="form-control" name="url" />
-                                    </div>
-                                    <span class="help-block"> e.g: http://www.demo.com or http://demo.com </span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">
-                                    Number
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-4">
-                                    <div class="input-icon right">
-                                        <i class="fa"></i>
-                                        <input type="text" class="form-control" name="number" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">
-                                    Digits
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-4">
-                                    <div class="input-icon right">
-                                        <i class="fa"></i>
-                                        <input type="text" class="form-control" name="digits" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">
-                                    Credit Card
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-4">
-                                    <div class="input-icon right">
-                                        <i class="fa"></i>
-                                        <input type="text" class="form-control" name="creditcard" />
-                                    </div>
-                                    <span class="help-block"> e.g: 5500 0000 0000 0004 </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-actions">
-                            <div class="row">
-                                <div class="col-md-offset-3 col-md-9">
-                                    <button type="submit" class="btn green">Submit</button>
-                                    <button type="button" class="btn default">Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- END FORM-->
-                </div>
-            </div>
-            <!-- END VALIDATION STATES-->
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <!-- BEGIN VALIDATION STATES-->
-            <div class="portlet light portlet-fit portlet-form ">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="icon-settings font-dark"></i>
-                        <span class="caption-subject font-dark sbold uppercase">Advance Validation</span>
-                    </div>
-                    <div class="actions">
-                        <div class="btn-group btn-group-devided" data-toggle="buttons">
-                            <label class="btn btn-transparent dark btn-outline btn-circle btn-sm active">
-                                <input type="radio" name="options" class="toggle" id="option1">Actions
-                            </label>
-                            <label class="btn btn-transparent dark btn-outline btn-circle btn-sm">
-                                <input type="radio" name="options" class="toggle" id="option2">Settings
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <!-- BEGIN FORM-->
-                    <form action="#" id="form_sample_3" class="form-horizontal">
-                        <div class="form-body">
-                            <div class="alert alert-danger display-hide">
-                                <button class="close" data-close="alert"></button> You have some form errors. Please check below.
-                            </div>
-                            <div class="alert alert-success display-hide">
-                                <button class="close" data-close="alert"></button> Your form validation is successful!
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">
-                                    Name
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-4">
-                                    <input type="text" name="name" data-required="1" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">
-                                    Email Address
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-4">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="fa fa-envelope"></i>
+<a href="index" >
+  <i class="icon-bar-chart"></i>
+  <span class="title">Dashboard 1</span>
+</a>
+
+<a href="dashboard_2" >
+  <i class="icon-bulb"></i>
+  <span class="title">Dashboard 2</span>
+  <span class="badge badge-success">1</span>
+</a>
+
+<a href="dashboard_3" >
+  <i class="icon-graph"></i>
+  <span class="title">Dashboard 3</span>
+  <span class="badge badge-danger">5</span>
+</a>
+
+<a href="ui_colors" >
+  <span class="title">Color Library</span>
+</a>
+
+<a href="ui_general" >
+  <span class="title">General Components</span>
+</a>
+
+<a href="ui_buttons" >
+  <span class="title">Buttons</span>
+</a>
+
+<a href="ui_confirmations" >
+  <span class="title">Popover Confirmations</span>
+</a>
+
+<a href="ui_icons" >
+  <span class="title">Font Icons</span>
+</a>
+
+<a href="ui_socicons" >
+  <span class="title">Social Icons</span>
+</a>
+
+<a href="ui_typography" >
+  <span class="title">Typography</span>
+</a>
+
+<a href="ui_tabs_accordions_navs" >
+  <span class="title">Tabs, Accordions & Navs</span>
+</a>
+
+<a href="ui_timeline" >
+  <span class="title">Timeline</span>
+</a>
+
+<a href="ui_tree" >
+  <span class="title">Tree View</span>
+</a>
+
+
+
+<a href="ui_page_progress_style_1" > Flash </a>
+
+<a href="ui_page_progress_style_2" > Big Counter </a>
+
+
+<a href="ui_blockui" >
+  <span class="title">Block UI</span>
+</a>
+
+<a href="ui_bootstrap_growl" >
+  <span class="title">Bootstrap Growl Notifications</span>
+</a>
+
+<a href="ui_notific8" >
+  <span class="title">Notific8 Notifications</span>
+</a>
+
+<a href="ui_toastr" >
+  <span class="title">Toastr Notifications</span>
+</a>
+
+<a href="ui_bootbox" >
+  <span class="title">Bootbox Dialogs</span>
+</a>
+
+<a href="ui_alerts_api" >
+  <span class="title">Metronic Alerts API</span>
+</a>
+
+<a href="ui_session_timeout" >
+  <span class="title">Session Timeout</span>
+</a>
+
+<a href="ui_idle_timeout" >
+  <span class="title">User Idle Timeout</span>
+</a>
+
+<a href="ui_modals" >
+  <span class="title">Modals</span>
+</a>
+
+<a href="ui_extended_modals" >
+  <span class="title">Extended Modals</span>
+</a>
+
+<a href="ui_tiles" >
+  <span class="title">Tiles</span>
+</a>
+
+<a href="ui_datepaginator" >
+  <span class="title">Date Paginator</span>
+</a>
+
+<a href="ui_nestable" >
+  <span class="title">Nestable List</span>
+</a>
+
+<a href="components_date_time_pickers" >
+  <span class="title">Date & Time Pickers</span>
+</a>
+
+<a href="components_color_pickers" >
+  <span class="title">Color Pickers</span>
+  <span class="badge badge-danger">2</span>
+</a>
+
+<a href="components_select2" >
+  <span class="title">Select2 Dropdowns</span>
+</a>
+
+<a href="components_bootstrap_select" >
+  <span class="title">Bootstrap Select</span>
+</a>
+
+<a href="components_multi_select" >
+  <span class="title">Multi Select</span>
+</a>
+
+<a href="components_bootstrap_select_splitter" >
+  <span class="title">Select Splitter</span>
+</a>
+
+<a href="components_typeahead" >
+  <span class="title">Typeahead Autocomplete</span>
+</a>
+
+<a href="components_bootstrap_tagsinput" >
+  <span class="title">Bootstrap Tagsinput</span>
+</a>
+
+<a href="components_bootstrap_switch" >
+  <span class="title">Bootstrap Switch</span>
+  <span class="badge badge-success">6</span>
+</a>
+
+<a href="components_bootstrap_maxlength" >
+  <span class="title">Bootstrap Maxlength</span>
+</a>
+
+<a href="components_bootstrap_fileinput" >
+  <span class="title">Bootstrap File Input</span>
+</a>
+
+<a href="components_bootstrap_touchspin" >
+  <span class="title">Bootstrap Touchspin</span>
+</a>
+
+<a href="components_form_tools" >
+  <span class="title">Form Widgets & Tools</span>
+</a>
+
+<a href="components_context_menu" >
+  <span class="title">Context Menu</span>
+</a>
+
+<a href="components_editors" >
+  <span class="title">Markdown & WYSIWYG Editors</span>
+</a>
+
+<a href="components_code_editors" >
+  <span class="title">Code Editors</span>
+</a>
+
+<a href="components_ion_sliders" >
+  <span class="title">Ion Range Sliders</span>
+</a>
+
+<a href="components_noui_sliders" >
+  <span class="title">NoUI Range Sliders</span>
+</a>
+
+<a href="components_knob_dials" >
+  <span class="title">Knob Circle Dials</span>
+</a>
+
+<a href="form_controls" >
+  <span class="title">
+    Bootstrap Form
+    <br>Controls
                                         </span>
-                                        <input type="email" name="email" class="form-control" placeholder="Email Address">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">Occupation&nbsp;&nbsp;</label>
-                                <div class="col-md-4">
-                                    <input name="occupation" type="text" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">
-                                    Select2 Dropdown
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-4">
-                                    <select class="form-control select2me" name="options2">
-                                        <option value="">Select...</option>
-                                        <option value="Option 1">Option 1</option>
-                                        <option value="Option 2">Option 2</option>
-                                        <option value="Option 3">Option 3</option>
-                                        <option value="Option 4">Option 4</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">Datepicker</label>
-                                <div class="col-md-4">
-                                    <div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
-                                        <input type="text" class="form-control" readonly name="datepicker">
-                                        <span class="input-group-btn">
-                                            <button class="btn default" type="button">
-                                                <i class="fa fa-calendar"></i>
-                                            </button>
+</a>
+
+<a href="form_controls_md" >
+  <span class="title">
+    Material Design
+    <br>Form Controls
                                         </span>
-                                    </div>
-                                    <!-- /input-group -->
-                                    <span class="help-block"> select a date </span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">
-                                    Membership
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-4">
-                                    <div class="radio-list" data-error-container="#form_2_membership_error">
-                                        <label>
-                                            <input type="radio" name="membership" value="1" /> Fee
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="membership" value="2" /> Professional
-                                        </label>
-                                    </div>
-                                    <div id="form_2_membership_error"> </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">
-                                    Services
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-4">
-                                    <div class="checkbox-list" data-error-container="#form_2_services_error">
-                                        <label>
-                                            <input type="checkbox" value="1" name="service" /> Service 1
-                                        </label>
-                                        <label>
-                                            <input type="checkbox" value="2" name="service" /> Service 2
-                                        </label>
-                                        <label>
-                                            <input type="checkbox" value="3" name="service" /> Service 3
-                                        </label>
-                                    </div>
-                                    <span class="help-block"> (select at least two) </span>
-                                    <div id="form_2_services_error"> </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">Markdown</label>
-                                <div class="col-md-9">
-                                    <textarea name="markdown" data-provide="markdown" rows="10" data-error-container="#editor_error"></textarea>
-                                    <div id="editor_error"> </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">
-                                    WYSIHTML5 Editor
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-9">
-                                    <textarea class="wysihtml5 form-control" rows="6" name="editor1" data-error-container="#editor1_error"></textarea>
-                                    <div id="editor1_error"> </div>
-                                </div>
-                            </div>
-                            <div class="form-group last">
-                                <label class="control-label col-md-3">
-                                    CKEditor
-                                    <span class="required"> * </span>
-                                </label>
-                                <div class="col-md-9">
-                                    <textarea class="ckeditor form-control" name="editor2" rows="6" data-error-container="#editor2_error"></textarea>
-                                    <div id="editor2_error"> </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-actions">
-                            <div class="row">
-                                <div class="col-md-offset-3 col-md-9">
-                                    <button type="submit" class="btn green">Submit</button>
-                                    <button type="button" class="btn default">Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- END FORM-->
-                </div>
-                <!-- END VALIDATION STATES-->
-            </div>
-        </div>
-    </div>
-</div>
-<!-- END CONTENT BODY -->
+</a>
+
+<a href="form_validation" >
+  <span class="title">Form Validation</span>
+  <span class="selected"></span>
+</a>
+
+<a href="form_validation_states_md" >
+  <span class="title">
+    Material Design
+    <br>Form Validation States
+                                        </span>
+</a>
+
+<a href="form_validation_md" >
+  <span class="title">
+    Material Design
+    <br>Form Validation
+                                        </span>
+</a>
+
+<a href="form_layouts" >
+  <span class="title">Form Layouts</span>
+</a>
+
+<a href="form_input_mask" >
+  <span class="title">Form Input Mask</span>
+</a>
+
+<a href="form_editable" >
+  <span class="title">Form X-editable</span>
+</a>
+
+<a href="form_wizard" >
+  <span class="title">Form Wizard</span>
+</a>
+
+<a href="form_icheck" >
+  <span class="title">iCheck Controls</span>
+</a>
+
+<a href="form_image_crop" >
+  <span class="title">Image Cropping</span>
+</a>
+
+<a href="form_fileupload" >
+  <span class="title">Multiple File Upload</span>
+</a>
+
+<a href="form_dropzone" >
+  <span class="title">Dropzone File Upload</span>
+</a>
+
+
+<a href="elements_steps" >
+  <span class="title">Steps</span>
+</a>
+
+<a href="elements_lists" >
+  <span class="title">Lists</span>
+</a>
+
+<a href="elements_ribbons" >
+  <span class="title">Ribbons</span>
+</a>
+
+
+
+<a href="table_static_basic" > Basic Tables </a>
+
+<a href="table_static_responsive" > Responsive Tables </a>
+
+
+
+<a href="table_datatables_managed" > Managed Datatables </a>
+
+<a href="table_datatables_buttons" > Buttons Extension </a>
+
+<a href="table_datatables_colreorder" > Colreorder Extension </a>
+
+<a href="table_datatables_rowreorder" > Rowreorder Extension </a>
+
+<a href="table_datatables_scroller" > Scroller Extension </a>
+
+<a href="table_datatables_fixedheader" > FixedHeader Extension </a>
+
+<a href="table_datatables_responsive" > Responsive Extension </a>
+
+<a href="table_datatables_editable" > Editable Datatables </a>
+
+<a href="table_datatables_ajax" > Ajax Datatables </a>
+
+
+<a href="portlet_boxed" >
+  <span class="title">Boxed Portlets</span>
+</a>
+
+<a href="portlet_light" >
+  <span class="title">Light Portlets</span>
+</a>
+
+<a href="portlet_solid" >
+  <span class="title">Solid Portlets</span>
+</a>
+
+<a href="portlet_ajax" >
+  <span class="title">Ajax Portlets</span>
+</a>
+
+<a href="portlet_draggable" >
+  <span class="title">Draggable Portlets</span>
+</a>
+
+<a href="charts_amcharts" >
+  <span class="title">amChart</span>
+</a>
+
+<a href="charts_flotcharts" >
+  <span class="title">Flot Charts</span>
+</a>
+
+<a href="charts_flowchart" >
+  <span class="title">Flow Charts</span>
+</a>
+
+<a href="charts_google" >
+  <span class="title">Google Charts</span>
+</a>
+
+<a href="charts_echarts" >
+  <span class="title">eCharts</span>
+</a>
+
+<a href="charts_morris" >
+  <span class="title">Morris Charts</span>
+</a>
+
+<a href="charts_highcharts" > HighCharts </a>
+
+<a href="charts_highstock" > HighStock </a>
+
+<a href="charts_highmaps" > HighMaps </a>
+
+<a href="maps_google" >
+  <span class="title">Google Maps</span>
+</a>
+
+<a href="maps_vector" >
+  <span class="title">Vector Maps</span>
+</a>
+
+<a href="layout_language_bar" >
+  <span class="title">Header Language Bar</span>
+</a>
+
+<a href="layout_footer_fixed" >
+  <span class="title">Fixed Footer</span>
+</a>
+
+<a href="layout_boxed_page" >
+  <span class="title">Boxed Page</span>
+</a>
+
+<a href="layout_blank_page" >
+  <span class="title">Blank Page</span>
+</a>
+
+<a href="layout_sidebar_menu_accordion" >
+  <span class="title">Sidebar Accordion Menu</span>
+</a>
+
+<a href="layout_sidebar_menu_compact" >
+  <span class="title">Sidebar Compact Menu</span>
+</a>
+
+<a href="layout_sidebar_reversed" >
+  <span class="title">Reversed Sidebar Page</span>
+</a>
+
+<a href="layout_sidebar_fixed" >
+  <span class="title">Fixed Sidebar Layout</span>
+</a>
+
+<a href="layout_sidebar_closed" >
+  <span class="title">Closed Sidebar Layout</span>
+</a>
+
+<a href="layout_disabled_menu" >
+  <span class="title">Disabled Menu Links</span>
+</a>
+
+<a href="layout_full_height_portlet" >
+  <span class="title">Full Height Portlet</span>
+</a>
+
+<a href="layout_full_height_content" >
+  <span class="title">Full Height Content</span>
+</a>
+
+<a href="ecommerce_index" >
+  <i class="icon-home"></i>
+  <span class="title">Dashboard</span>
+</a>
+
+<a href="ecommerce_orders" >
+  <i class="icon-basket"></i>
+  <span class="title">Orders</span>
+</a>
+
+<a href="ecommerce_orders_view" >
+  <i class="icon-tag"></i>
+  <span class="title">Order View</span>
+</a>
+
+<a href="ecommerce_products" >
+  <i class="icon-graph"></i>
+  <span class="title">Products</span>
+</a>
+
+<a href="ecommerce_products_edit" >
+  <i class="icon-graph"></i>
+  <span class="title">Product Edit</span>
+</a>
+
+<a href="app_todo" >
+  <i class="icon-clock"></i>
+  <span class="title">Todo 1</span>
+</a>
+
+<a href="app_todo_2" >
+  <i class="icon-check"></i>
+  <span class="title">Todo 2</span>
+</a>
+
+<a href="app_inbox" >
+  <i class="icon-envelope"></i>
+  <span class="title">Inbox</span>
+</a>
+
+<a href="app_calendar" >
+  <i class="icon-calendar"></i>
+  <span class="title">Calendar</span>
+</a>
+
+<a href="javascript:;" class="nav-link nav-toggle">
+  <i class="icon-user"></i>
+  <span class="title">User</span>
+  <span class="arrow"></span>
+</a>
+
+<a href="page_user_profile_1" >
+  <i class="icon-user"></i>
+  <span class="title">Profile 1</span>
+</a>
+
+<a href="page_user_profile_1_account" >
+  <i class="icon-user-female"></i>
+  <span class="title">Profile 1 Account</span>
+</a>
+
+<a href="page_user_profile_1_help" >
+  <i class="icon-user-following"></i>
+  <span class="title">Profile 1 Help</span>
+</a>
+
+<a href="page_user_profile_2" >
+  <i class="icon-users"></i>
+  <span class="title">Profile 2</span>
+</a>
+
+<a href="javascript:;" class="nav-link nav-toggle">
+  <i class="icon-notebook"></i>
+  <span class="title">Login</span>
+  <span class="arrow"></span>
+</a>
+
+<a href="page_user_login_1"  target="_blank"> Login Page 1 </a>
+
+<a href="page_user_login_2"  target="_blank"> Login Page 2 </a>
+
+<a href="page_user_login_3"  target="_blank"> Login Page 3 </a>
+
+<a href="page_user_login_4"  target="_blank"> Login Page 4 </a>
+
+<a href="page_user_login_5"  target="_blank"> Login Page 5 </a>
+
+<a href="page_user_login_6"  target="_blank"> Login Page 6 </a>
+
+<a href="page_user_lock_1"  target="_blank">
+  <i class="icon-lock"></i>
+  <span class="title">Lock Screen 1</span>
+</a>
+
+<a href="page_user_lock_2"  target="_blank">
+  <i class="icon-lock-open"></i>
+  <span class="title">Lock Screen 2</span>
+</a>
+
+<a href="page_general_about" >
+  <i class="icon-info"></i>
+  <span class="title">About</span>
+</a>
+
+<a href="page_general_contact" >
+  <i class="icon-call-end"></i>
+  <span class="title">Contact</span>
+</a>
+
+<a href="javascript:;" class="nav-link nav-toggle">
+  <i class="icon-notebook"></i>
+  <span class="title">Portfolio</span>
+  <span class="arrow"></span>
+</a>
+
+<a href="page_general_portfolio_1" > Portfolio 1 </a>
+
+<a href="page_general_portfolio_2" > Portfolio 2 </a>
+
+<a href="page_general_portfolio_3" > Portfolio 3 </a>
+
+<a href="page_general_portfolio_4" > Portfolio 4 </a>
+
+
+<a href="javascript:;" class="nav-link nav-toggle">
+  <i class="icon-magnifier"></i>
+  <span class="title">Search</span>
+  <span class="arrow"></span>
+</a>
+
+<a href="page_general_search" > Search 1 </a>
+
+<a href="page_general_search_2" > Search 2 </a>
+
+<a href="page_general_search_3" > Search 3 </a>
+
+<a href="page_general_search_4" > Search 4 </a>
+
+<a href="page_general_search_5" > Search 5 </a>
+
+
+<a href="page_general_pricing" >
+  <i class="icon-tag"></i>
+  <span class="title">Pricing</span>
+</a>
+
+<a href="page_general_faq" >
+  <i class="icon-wrench"></i>
+  <span class="title">FAQ</span>
+</a>
+
+<a href="page_general_blog" >
+  <i class="icon-pencil"></i>
+  <span class="title">Blog</span>
+</a>
+
+<a href="page_general_blog_post" >
+  <i class="icon-note"></i>
+  <span class="title">Blog Post</span>
+</a>
+
+<a href="page_general_invoice" >
+  <i class="icon-envelope"></i>
+  <span class="title">Invoice</span>
+</a>
+
+<a href="page_general_invoice_2" >
+  <i class="icon-envelope"></i>
+  <span class="title">Invoice 2</span>
+</a>
+
+<a href="page_system_coming_soon"  target="_blank">
+  <span class="title">Coming Soon</span>
+</a>
+
+<a href="page_system_404_1" >
+  <span class="title">404 Page 1</span>
+</a>
+
+<a href="page_system_404_2"  target="_blank">
+  <span class="title">404 Page 2</span>
+</a>
+
+<a href="page_system_404_3"  target="_blank">
+  <span class="title">404 Page 3</span>
+</a>
+
+<a href="page_system_500_1" >
+  <span class="title">500 Page 1</span>
+</a>
+
+<a href="page_system_500_2"  target="_blank">
+  <span class="title">500 Page 2</span>
+</a>
+
+
+
+<a href="?p=dashboard-2" target="_blank" class="nav-link">
+  <i class="icon-user"></i> Arrow Toggle
+  <span class="arrow nav-toggle"></span>
+</a>
+
+
