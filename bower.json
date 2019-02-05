@@ -12,13 +12,16 @@
     "bootstrap": "3.4.0",
     "bootstrap-switch": "3.3.4",
     "bootstrap-hover-dropdown": "2.2.1",
+    "bootstrap-confirmation2": "2.0.0",
     "font-awesome": "4.7.0",
     "simple-line-icons": "2.4.1",
     "uniform.js": "2.2.2",
     "holder.js": "2.9.6",
     "js-cookie": "2.2.0",
     "jquery-slimscroll": "1.3.8",
-    "jquery.blockui": "2.7.0"
+    "jquery.blockui": "2.7.0",
+    "jquery.pulsate": "1.0.0",
+    "jquery-bootpag": "1.0.7"
   },
   "homepage": "https://github.com/maskend/pentex",
   "main": "",
