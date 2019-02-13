@@ -1,0 +1,99 @@
+﻿.promo-box-row {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+    .promo-box-row .col-lg-2,
+    .promo-box-row .col-md-3,
+    .promo-box-row .col-sm-4,
+    .promo-box-row .col-xs-6 {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+
+.promo-box {
+    display: inline-block;
+    position: relative;
+    margin: 5px;
+    padding: 5px 10px;
+    width: auto;
+    min-width: 97%;
+    max-width: 97%;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    overflow: hidden;
+    color: #385382;
+    background: #fff;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.2);
+}
+
+    .promo-box .title {
+        font-size: 13px;
+        font-weight: 500;
+        display: block;
+        text-align: right;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        float: right;
+        width: 70%;
+        position: relative;
+    }
+
+    .promo-box .value {
+        font-size: 26px;
+        display: block;
+        text-align: right;
+        float: right;
+        width: 70%;
+        position: relative;
+    }
+
+    .promo-box .date {
+        font-size: 11px;
+        display: block;
+        float: right;
+        width: 68%;
+        text-align: right;
+        position: relative;
+        text-transform: capitalize;
+        margin-top: 7px;
+        margin-bottom: 0;
+    }
+
+        .promo-box .date i.icon {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+    .promo-box .icon-box {
+        position: absolute;
+        width: 30%;
+        height: 100%;
+        text-align: left;
+        top: 0;
+        left: 0;
+        padding: 0;
+    }
+
+        .promo-box .icon-box i.icon {
+            font-size: 40px;
+            width: 100%;
+            height: 100%;
+            color: #fff;
+            position: absolute;
+            top: 25%;
+            opacity: 0.85;
+            line-height: 1;
+            text-align: center;
+        }
+
+        .promo-box .icon-box i.icon-shade {
+            font-size: 66px;
+            margin-top: 20px;
+            margin-left: -5px;
+            color: #fff;
+            opacity: 0.18;
+            position: absolute;
+        }

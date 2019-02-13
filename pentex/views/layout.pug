@@ -1,0 +1,21 @@
+﻿doctype html
+html
+  head.animated.fadeIn
+    title= title
+    meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(href='./libs/bootswatch/superhero/bootstrap.min.css' rel='stylesheet')
+    link(href='./libs/animate-css/animate.min.css' rel='stylesheet')
+    link(href='./libs/simple-line-icons/css/simple-line-icons.css' rel='stylesheet')
+    // ui work changes inprocess
+    link(href='./stylesheets/body.css' rel='stylesheet')
+    link(href='./stylesheets/timeline.css' rel='stylesheet')
+    link(href='./stylesheets/navbar.css' rel='stylesheet')
+    link(rel='stylesheet', href='/stylesheets/main.css')
+  body.animated.fadeIn.navbar-side-card
+    script(src='./libs/jquery/dist/jquery.min.js')
+    script(src='./libs/bootstrap/dist/js/bootstrap.min.js')
+    include navbar
+    div.page-content
+      block content
