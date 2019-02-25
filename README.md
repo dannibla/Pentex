@@ -2,7 +2,7 @@
 
 Pentex Dashboard is a Bootstrap Admin Panel for Complex Business Modules - An Open Source Admin Dashboard by Maskend.
 
-### What's included
+## What's included
 Within the download you'll find the following directories and files:
 ```
 Pentex Dashboard
