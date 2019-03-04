@@ -34,6 +34,3 @@ Pentex Dashboard
 
 ## Thanks
 [Mark Otto](https://github.com/mdo) and [Jacob Thornton](https://github.com/fat) for [Bootstrap](https://github.com/twbs/bootstrap).
-
-## Copyright and License
-Copyright 2019 Maskend, released under the MIT License.
